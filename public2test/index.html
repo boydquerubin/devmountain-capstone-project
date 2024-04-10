@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Budget Planner</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h1 class="mt-5 mb-4 text-center">Simple Budget Planner</h1>
+      <div class="row">
+        <div class="col-md-6 offset-md-3">
+          <div class="card">
+            <div class="card-body">
+              <!-- Form for adding expenses -->
+              <form id="expense-form">
+                <div class="form-group">
+                  <label for="expenseName">Expense Name</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="expenseName"
+                    required
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="expenseAmount">Expense Amount</label>
+                  <input
+                    type="number"
+                    class="form-control"
+                    id="expenseAmount"
+                    required
+                  />
+                </div>
+                <button type="submit" class="btn btn-primary btn-block">
+                  Add Expense
+                </button>
+              </form>
+            </div>
+          </div>
+          <!-- List to display expenses -->
+          <ul id="expense-list" class="list-group mt-4">
+            <!-- Expenses will be dynamically added here -->
+          </ul>
+          <!-- Total expense -->
+          <div id="total-expense" class="mt-3 text-center"></div>
+        </div>
+      </div>
+    </div>
+
+    <script src="index.js"></script>
+  </body>
+</html>
