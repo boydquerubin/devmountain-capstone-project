@@ -1,0 +1,29 @@
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background-color: rgb(173, 239, 255);
+}
+
+main {
+    flex: 1;
+}
+
+.my-custom-row {
+    height: 50vh;
+}
+
+.tab-container {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 15px;
+    margin-bottom: 20px;
+}
+
+.tab-content {
+    text-align: center;
+}
+
+footer {
+    margin-top: auto;
+}
