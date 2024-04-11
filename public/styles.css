@@ -14,7 +14,6 @@ main {
 }
 
 .tab-container {
-    border: 1px solid #ccc;
     border-radius: 5px;
     padding: 15px;
     margin-bottom: 20px;
@@ -22,11 +21,21 @@ main {
 }
 
 .tab-content {
-    text-align: center;
-    background-color: aliceblue;
-    min-height: 50vh;
+    border-radius: 5px;
+    text-align: left;
+    background-color: azure;
+    min-height: 60vh;
+    padding: 4rem;
+    padding-left: 12rem;
+    padding-right: 12rem;
+}
+
+.dropdown-menu {
+    width: 100%;
+    min-width: 100px;
 }
 
 footer {
     margin-top: auto;
 }
+
