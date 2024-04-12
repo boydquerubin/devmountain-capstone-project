@@ -31,11 +31,25 @@ main {
 }
 
 .dropdown-menu {
-    width: 100%;
-    min-width: 100px;
+    /* width: 100%; */
+}
+
+.input-container {
+    display: flex;
+    flex-direction: row;
+}
+
+.total-income-section {
+    margin-top: 3rem;
+    text-align: center;
+}
+
+.total-expenses-section {
+    margin-top: 3rem;
+    text-align: center;
 }
 
 footer {
     margin-top: auto;
+    padding: 20px;
 }
-
