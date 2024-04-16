@@ -1,29 +1,39 @@
 document.addEventListener("DOMContentLoaded", function() {
-    const dropdownItems = document.querySelectorAll('.dropdown-item');
-    dropdownItems.forEach(function(item) {
+    const incomeDropdownItems = document.querySelectorAll('.income-section .dropdown-menu .dropdown-item');
+    incomeDropdownItems.forEach(function(item) {
         item.addEventListener('click', function(event) {
             event.preventDefault();
             const selectedFrequency = this.innerText.trim();
+            console.log("Selected Income Frequency:", selectedFrequency);
             updateIncomeFrequency(selectedFrequency); // Update income frequency
+            updateTotalIncome(selectedFrequency); // Update total income with frequency
+        });
+    });
+
+    const expenseDropdownItems = document.querySelectorAll('.total-expenses-section .dropdown-menu .dropdown-item');
+    expenseDropdownItems.forEach(function(item) {
+        item.addEventListener('click', function(event) {
+            event.preventDefault();
+            const selectedFrequency = this.innerText.trim();
+            console.log("Selected Expense Frequency:", selectedFrequency);
             updateExpensesFrequency(selectedFrequency); // Update expenses frequency
-            updateTotalIncome(); // Update total income
-            updateTotalExpenses(selectedFrequency); // Update total expenses
+            updateTotalExpenses(selectedFrequency); // Update total expenses with frequency
         });
     });
 });
 
 const incomeIds = [
-    'primary-income-frequency', "self-employment-frequency", "property-rent-frequency", "financial-support-frequency", 
+    'payroll-frequency', "self-employment-frequency", "property-rent-frequency", "financial-support-frequency", 
     "pension-frequency", "other-frequency"
 ];
 
 const expenseIds = [
-    'mortgage-rent', 'house-insurance', 'car-payments',
-    'car-insurance', 'health-insurance', 'vision', 'dental',
-    'electricity', 'water', 'sewer', 'gas', 'waste-disposal',
-    'internet', 'shopping', 'ordering-in-dining-out', 'date-nights', 'family-date-nights',
-    'clothes', 'shoes', 'haircuts', 'transportation', 'daycare',
-    'savings', 'emergency-fund', 'miscellaneous'
+    'mortgage-rent-frequency', 'house-insurance-frequency', 'car-payments-frequency',
+    'car-insurance-frequency', 'health-insurance-frequency', 'vision-frequency', 'dental-frequency',
+    'electricity-frequency', 'water-frequency', 'sewer-frequency', 'gas-frequency', 'waste-disposal-frequency',
+    'internet-frequency', 'shopping-frequency', 'ordering-in-dining-out-frequency', 'date-nights-frequency', 'family-date-nights-frequency',
+    'clothes-frequency', 'shoes-frequency', 'haircuts-frequency', 'transportation-frequency', 'daycare-frequency',
+    'savings-frequency', 'emergency-fund-frequency', 'miscellaneous-frequency'
 ];
 
 function updateIncomeFrequency(incomeFrequency) {
@@ -39,16 +49,26 @@ function updateExpensesFrequency(expensesFrequency) {
 }
 
 function updateTotal(selector, frequency) {
+    console.log("Calculating total for frequency:", frequency);
     let total = 0;
     document.querySelectorAll(selector).forEach(input => {
+        console.log("Input value:", input.value);
         total += parseFloat(input.value) || 0;
     });
-    return frequency === 'Bi-Weekly' ? total * 2 : total;
+    console.log("Total:", total);
+    return total;
 }
 
-function updateTotalIncome() {
-    const selectedFrequency = document.getElementById('select-frequency').innerText.trim();
-    const totalIncome = updateTotal('#payroll-amount, #self-employment-amount, #property-rent-amount, #financial-support-amount, #pension-amount, #other-amount', selectedFrequency);
+function updateTotalIncome(selectedFrequency) {
+    console.log("updateTotalIncome function called with frequency:", selectedFrequency);
+    const multiplier = selectedFrequency === 'Bi-Weekly' ? 2 : 1; // Apply multiplier if frequency is Bi-Weekly
+    let totalIncome = updateTotal('#payroll-amount, #self-employment-amount, #property-rent-amount, #financial-support-amount, #pension-amount, #other-amount', selectedFrequency);
+    console.log("Total Income Before Multiplier:", totalIncome);
+    if (selectedFrequency === 'Bi-Weekly') {
+        console.log("Applying multiplier to total income...");
+        totalIncome *= 2; // Apply multiplier to the total income
+    }
+    console.log("Total Income After Multiplier:", totalIncome);
     document.getElementById('total-income').textContent = `$${totalIncome.toFixed(2)}`;
 }
 
