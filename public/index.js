@@ -1,93 +1,175 @@
+var budgetSummaryChart; // Global variable to hold the chart instance
+var isSummaryListenerSet = false; // Ensure this is defined at the top level to track event binding
+var expenseBreakdownChart;
+
+function initializeBudgetSummaryChart() {
+    const canvas = document.getElementById("budgetSummaryChart");
+    const ctx = canvas.getContext("2d");
+
+    // Destroy the existing chart instance if it exists
+    if (budgetSummaryChart) {
+        budgetSummaryChart.destroy();
+    }
+
+    // Create a new instance of the chart
+    budgetSummaryChart = new Chart(ctx, {
+        type: "bar",
+        data: {
+            labels: ["Income", "Expenses"],
+            datasets: [{
+                label: "Amount in $",
+                data: [
+                    parseFloat(document.getElementById("total-income").textContent.replace('$', '')),
+                    parseFloat(document.getElementById("total-expenses").textContent.replace('$', ''))
+                ],
+                backgroundColor: ["rgba(75, 192, 192, 0.2)", "rgba(255, 99, 132, 0.2)"],
+                borderColor: ["rgba(75, 192, 192, 1)", "rgba(255, 99, 132, 1)"],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: true,
+            scales: {
+                y: { beginAtZero: true }
+            }
+        }
+    });
+}
+
+function initializeExpenseBreakdownPieChart() {
+    const canvas = document.getElementById("expenseBreakdownPieChart");
+    const ctx = canvas.getContext("2d");
+
+    // Destroy the existing chart instance if it exists
+    if (expenseBreakdownChart) {
+        expenseBreakdownChart.destroy();
+    }
+
+    // Create a new instance of the chart
+    expenseBreakdownChart = new Chart(ctx, {
+        type: "pie",
+        data: {
+            labels: gatherExpenseData().map(e => e.name),
+            datasets: [{
+                label: "Expense Breakdown",
+                data: gatherExpenseData().map(e => e.amount),
+                backgroundColor: [
+                    "rgba(255, 99, 132, 0.5)",
+                    "rgba(54, 162, 235, 0.5)",
+                    "rgba(255, 206, 86, 0.5)",
+                    // More colors as needed
+                ],
+                borderColor: [
+                    "rgba(255, 99, 132, 1)",
+                    "rgba(54, 162, 235, 1)",
+                    "rgba(255, 206, 86, 1)"
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: true
+        }
+    });
+}
+
+
+function gatherExpenseData() {
+    const data = [
+        { name: "Mortgage or Rent", amount: getAdjustedAmount("mortgage-rent-amount", "mortgage-rent-frequency") },
+        { name: "House Insurance", amount: getAdjustedAmount("house-insurance-amount", "house-insurance-frequency") },
+        { name: "Car Payments", amount: getAdjustedAmount("car-payments-amount", "car-payments-frequency") },
+        { name: "Car Insurance", amount: getAdjustedAmount("car-insurance-amount", "car-insurance-frequency") },
+        { name: "Health Insurance", amount: getAdjustedAmount("health-insurance-amount", "health-insurance-frequency") },
+        // Add more categories as needed...
+    ];
+    console.log("Expense Data for Chart:", data);
+    return data;
+}
+
+function getAdjustedAmount(amountId, frequencyId) {
+    let amount = parseFloat(document.getElementById(amountId).value) || 0;
+    const frequencyElement = document.getElementById(frequencyId);
+    const frequency = frequencyElement ? frequencyElement.value : "Monthly";
+
+    console.log(`Fetching amount for ${amountId}, frequency: ${frequency}, original amount: ${amount}`);
+
+    if (frequency === "Bi-Weekly") {
+        amount *= 2;  // Double the amount for bi-weekly
+        console.log(`Adjusted amount for bi-weekly: ${amount}`);
+    }
+    return amount;
+}
+
 document.addEventListener("DOMContentLoaded", function () {
-	// Handling dropdown item clicks in the income section
-	const incomeDropdownItems = document.querySelectorAll(
-		".income-section .dropdown-menu .dropdown-item"
-	);
-	incomeDropdownItems.forEach(function (item) {
-		item.addEventListener("click", function (event) {
-			event.preventDefault();
-			const selectedFrequency = this.innerText.trim();
-			const dropdownId =
-				this.closest(".dropdown-menu").getAttribute("aria-labelledby");
-			console.log("Selected Income Frequency:", selectedFrequency);
-			updateIncomeFrequency(selectedFrequency, dropdownId);
-			updateTotalIncome(selectedFrequency);
+	// Setup listeners for all dropdown items and form inputs
+	document
+		.querySelectorAll(
+			".income-section .dropdown-menu .dropdown-item, .total-expenses-section .dropdown-menu .dropdown-item"
+		)
+		.forEach((item) => {
+			item.addEventListener("click", function (event) {
+				event.preventDefault();
+				const selectedFrequency = this.innerText.trim();
+				const dropdownId =
+					this.closest(".dropdown-menu").getAttribute("aria-labelledby");
+				if (this.closest(".income-section")) {
+					updateIncomeFrequency(selectedFrequency, dropdownId);
+					updateTotalIncome(selectedFrequency);
+				} else if (this.closest(".total-expenses-section")) {
+					updateExpensesFrequency(selectedFrequency, dropdownId);
+					updateTotalExpenses(selectedFrequency);
+				}
+			});
 		});
-	});
 
-	// Handling dropdown item clicks in the expenses section
-	const expenseDropdownItems = document.querySelectorAll(
-		".total-expenses-section .dropdown-menu .dropdown-item"
-	);
-	expenseDropdownItems.forEach(function (item) {
-		item.addEventListener("click", function (event) {
-			event.preventDefault();
-			const selectedFrequency = this.innerText.trim();
-			const dropdownId =
-				this.closest(".dropdown-menu").getAttribute("aria-labelledby");
-			console.log("Selected Expense Frequency:", selectedFrequency);
-			updateExpensesFrequency(selectedFrequency, dropdownId);
-			updateTotalExpenses(selectedFrequency);
-		});
-	});
+        document.querySelectorAll('.expense-frequency-selector').forEach(selector => {
+            selector.addEventListener('change', function() {
+                initializeExpenseBreakdownPieChart();  // Recalculate the chart when frequency changes
+            });
+        });        
 
-	// Handling click events for "Next" buttons on each tab
-	const nextTabButtons = document.querySelectorAll(".next-tab-button");
-	nextTabButtons.forEach((button) => {
+	// Input change listeners for updating the pie chart
+	document.querySelectorAll('.form-control.mb-3').forEach(input => {
+        input.addEventListener('input', function() {
+            initializeExpenseBreakdownPieChart();  // Update chart whenever an input changes
+        });
+    });    
+
+	// Tab button listeners
+	document.querySelectorAll(".next-tab-button").forEach((button) => {
 		button.addEventListener("click", function () {
-			const nextTabSelector = this.getAttribute("data-next"); // Get the selector of the next tab from data attribute
+			const nextTabSelector = this.getAttribute("data-next");
 			const nextTab = document.querySelector(
 				`.nav-link[href='${nextTabSelector}']`
 			);
 			new bootstrap.Tab(nextTab).show(); // Use Bootstrap's Tab class to show the next tab
 		});
 	});
+
+	// Listener for when the summary tab is shown
+	if (!isSummaryListenerSet) {
+		document
+			.querySelector('[href="#summary"]')
+			.addEventListener("shown.bs.tab", function () {
+				console.log("Summary tab shown, initializing chart");
+				initializeBudgetSummaryChart();
+				initializeExpenseBreakdownPieChart();
+			});
+		isSummaryListenerSet = true;
+	}
+
+    document.querySelectorAll('.frequency-selector').forEach(selector => {
+    selector.addEventListener('change', initializeExpenseBreakdownPieChart);
 });
 
-// Declare the chart variable outside of any function to make it globally accessible
-var incomeExpenseChart;
-
-document.addEventListener("DOMContentLoaded", function () {
-    var ctx = document.getElementById('incomeExpenseChart').getContext('2d');
-    if (incomeExpenseChart) {
-        incomeExpenseChart.destroy(); // Destroy the existing chart instance if it exists
-    }
-    incomeExpenseChart = new Chart(ctx, {
-        type: 'pie',
-        // your chart configuration...
-    });
-    
-    // Update chart function
-    function updateChart(income, expenses) {
-        if (incomeExpenseChart) {
-            incomeExpenseChart.destroy(); // Ensure the old chart is destroyed
-        }
-        incomeExpenseChart = new Chart(ctx, {
-            type: 'pie',
-            data: {
-                labels: ['Total Income', 'Total Expenses'],
-                datasets: [{
-                    label: 'Financial Overview',
-                    data: [income, expenses],
-                    backgroundColor: ['rgba(54, 162, 235, 0.6)', 'rgba(255, 99, 132, 0.6)'],
-                    borderColor: ['rgba(54, 162, 235, 1)', 'rgba(255, 99, 132, 1)'],
-                    borderWidth: 1
-                }]
-            },
-            options: {
-                responsive: true,
-                maintainAspectRatio: false,
-                plugins: {
-                    legend: {
-                        display: true,
-                        position: 'top'
-                    }
-                }
-            }
-        });
-    }
 });
 
+function testAdjustments() {
+    console.log(getAdjustedAmount("test-amount-id", "test-frequency-id"));
+}
 
 const incomeIds = [
 	"payroll-frequency",
@@ -127,9 +209,9 @@ const expenseIds = [
 ];
 
 function updateIncomeFrequency(incomeFrequency, dropdownId) {
-	const dropdownElement = document.getElementById(dropdownId);
-	if (dropdownElement) {
-		dropdownElement.innerText = incomeFrequency;
+	const dropdownButton = document.getElementById(dropdownId);
+	if (dropdownButton) {
+		dropdownButton.innerText = incomeFrequency;
 		updateTotalIncome(incomeFrequency);
 	} else {
 		console.error("Dropdown element not found:", dropdownId);
@@ -137,18 +219,15 @@ function updateIncomeFrequency(incomeFrequency, dropdownId) {
 }
 
 function updateExpensesFrequency(expensesFrequency, dropdownId) {
-	// Correct the ID to match the button's ID used in the HTML
-	const dropdownElement = document.getElementById(dropdownId + "-dropdown");
-	if (dropdownElement) {
-		// Update the visible dropdown label
-		dropdownElement.innerText = expensesFrequency;
+	const dropdownButton = document.getElementById(dropdownId);
 
-		// Updating the active class for dropdown items if necessary
+	if (dropdownButton) {
+		dropdownButton.textContent = expensesFrequency;
 		const dropdownItems =
-			dropdownElement.nextElementSibling.querySelectorAll(".dropdown-item");
+			dropdownButton.nextElementSibling.querySelectorAll(".dropdown-item");
 		dropdownItems.forEach((item) => {
-			if (item.innerText.trim() === expensesFrequency) {
-				item.classList.add("active"); // Adding 'active' class or whatever class your CSS uses
+			if (item.textContent.trim() === expensesFrequency) {
+				item.classList.add("active");
 			} else {
 				item.classList.remove("active");
 			}

@@ -83,7 +83,7 @@
           <a class="nav-link" data-bs-toggle="tab" href="#expenses">Expenses</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" data-bs-toggle="tab" href="#summary">Summary</a>
+            <a class="nav-link" id="summary-tab" data-bs-toggle="tab" href="#summary" role="tab" aria-controls="summary" aria-selected="false">Summary</a>
         </li>
       </ul>
 
@@ -97,7 +97,7 @@
                 income details and select the frequency from the dropdown menu.
                 Add any additional income in the 'Other Forms of Income'
                 section. Next, list your expenses, categorizing them by type.
-                Our tool will calculate your total income and expenses, giving
+                This tool will calculate your total income and expenses, giving
                 you a clear picture of your budget. Feel free to adjust as
                 needed. Happy budgeting!
               </p>
@@ -169,34 +169,20 @@
 
                   <div class="input-group mb-3">
                     <button
-                      class="btn btn-outline-secondary dropdown-toggle"
-                      type="button"
-                      id="payroll-frequency-dropdown"
-                      data-bs-toggle="dropdown"
-                      aria-expanded="false"
+                        class="btn btn-outline-secondary dropdown-toggle"
+                        type="button"
+                        id="payroll-frequency-dropdown"
+                        data-bs-toggle="dropdown"
+                        aria-expanded="false"
                     >
-                      Frequency
+                        Select Frequency
                     </button>
-                    <ul
-                      class="dropdown-menu"
-                      aria-labelledby="payroll-frequency-dropdown"
-                    >
-                      <li>
-                        <a
-                          class="dropdown-item"
-                          onclick="updateIncomeFrequency('Bi-Weekly', 'payroll-frequency')"
-                          >Bi-Weekly</a
-                        >
-                      </li>
-                      <li>
-                        <a
-                          class="dropdown-item"
-                          onclick="updateIncomeFrequency('Monthly', 'payroll-frequency')"
-                          >Monthly</a
-                        >
-                      </li>
+                    <ul class="dropdown-menu" aria-labelledby="payroll-frequency-dropdown">
+                        <li><a class="dropdown-item" onclick="updateIncomeFrequency('Bi-Weekly', 'payroll-frequency-dropdown')">Bi-Weekly</a></li>
+                        <li><a class="dropdown-item" onclick="updateIncomeFrequency('Monthly', 'payroll-frequency-dropdown')">Monthly</a></li>
                     </ul>
-                  </div>
+                </div>
+                
                 </div>
               </div>
             </div>
@@ -231,7 +217,7 @@
                       data-bs-toggle="dropdown"
                       aria-expanded="false"
                     >
-                      Frequency
+                      Select Frequency
                     </button>
                     <ul
                       class="dropdown-menu"
@@ -240,14 +226,14 @@
                       <li>
                         <a
                           class="dropdown-item"
-                          onclick="updateIncomeFrequency('Bi-Weekly', 'self-employment-frequency')"
+                          onclick="updateIncomeFrequency('Bi-Weekly', 'self-employment-frequency-dropdown')"
                           >Bi-Weekly</a
                         >
                       </li>
                       <li>
                         <a
                           class="dropdown-item"
-                          onclick="updateIncomeFrequency('Monthly', 'self-employment-frequency')"
+                          onclick="updateIncomeFrequency('Monthly', 'self-employment-frequency-dropdown')"
                           >Monthly</a
                         >
                       </li>
@@ -284,7 +270,7 @@
                       data-bs-toggle="dropdown"
                       aria-expanded="false"
                     >
-                      Frequency
+                      Select Frequency
                     </button>
                     <ul
                       class="dropdown-menu"
@@ -293,14 +279,14 @@
                       <li>
                         <a
                           class="dropdown-item"
-                          onclick="updateIncomeFrequency('Bi-Weekly', 'property-rent-frequency')"
+                          onclick="updateIncomeFrequency('Bi-Weekly', 'property-rent-frequency-dropdown')"
                           >Bi-Weekly</a
                         >
                       </li>
                       <li>
                         <a
                           class="dropdown-item"
-                          onclick="updateIncomeFrequency('Monthly', 'property-rent-frequency')"
+                          onclick="updateIncomeFrequency('Monthly', 'property-rent-frequency-dropdown')"
                           >Monthly</a
                         >
                       </li>
@@ -337,7 +323,7 @@
                       data-bs-toggle="dropdown"
                       aria-expanded="false"
                     >
-                      Frequency
+                      Select Frequency
                     </button>
                     <ul
                       class="dropdown-menu"
@@ -346,14 +332,14 @@
                       <li>
                         <a
                           class="dropdown-item"
-                          onclick="updateIncomeFrequency('Bi-Weekly', 'financial-support-frequency')"
+                          onclick="updateIncomeFrequency('Bi-Weekly', 'financial-support-frequency-dropdown')"
                           >Bi-Weekly</a
                         >
                       </li>
                       <li>
                         <a
                           class="dropdown-item"
-                          onclick="updateIncomeFrequency('Monthly', 'financial-support-frequency')"
+                          onclick="updateIncomeFrequency('Monthly', 'financial-support-frequency-dropdown')"
                           >Monthly</a
                         >
                       </li>
@@ -390,7 +376,7 @@
                       data-bs-toggle="dropdown"
                       aria-expanded="false"
                     >
-                      Frequency
+                      Select Frequency
                     </button>
                     <ul
                       class="dropdown-menu"
@@ -399,14 +385,14 @@
                       <li>
                         <a
                           class="dropdown-item"
-                          onclick="updateIncomeFrequency('Bi-Weekly', 'pension-frequency')"
+                          onclick="updateIncomeFrequency('Bi-Weekly', 'pension-frequency-dropdown')"
                           >Bi-Weekly</a
                         >
                       </li>
                       <li>
                         <a
                           class="dropdown-item"
-                          onclick="updateIncomeFrequency('Monthly', 'pension-frequency')"
+                          onclick="updateIncomeFrequency('Monthly', 'pension-frequency-dropdown')"
                           >Monthly</a
                         >
                       </li>
@@ -443,7 +429,7 @@
                       data-bs-toggle="dropdown"
                       aria-expanded="false"
                     >
-                      Frequency
+                      Select Frequency
                     </button>
                     <ul
                       class="dropdown-menu"
@@ -452,14 +438,14 @@
                       <li>
                         <a
                           class="dropdown-item"
-                          onclick="updateIncomeFrequency('Bi-Weekly', 'other-frequency')"
+                          onclick="updateIncomeFrequency('Bi-Weekly', 'other-frequency-dropdown')"
                           >Bi-Weekly</a
                         >
                       </li>
                       <li>
                         <a
                           class="dropdown-item"
-                          onclick="updateIncomeFrequency('Monthly', 'other-frequency')"
+                          onclick="updateIncomeFrequency('Monthly', 'other-frequency-dropdown')"
                           >Monthly</a
                         >
                       </li>
@@ -511,7 +497,7 @@
                       data-bs-toggle="dropdown"
                       aria-expanded="false"
                     >
-                      Frequency
+                      Select Frequency
                     </button>
                     <ul
                       class="dropdown-menu"
@@ -520,14 +506,14 @@
                       <li>
                         <a
                           class="dropdown-item"
-                          onclick="updateExpensesFrequency('Bi-Weekly', 'mortgage-rent-frequency')"
+                          onclick="updateExpensesFrequency('Bi-Weekly', 'mortgage-rent-frequency-dropdown')"
                           >Bi-Weekly</a
                         >
                       </li>
                       <li>
                         <a
                           class="dropdown-item"
-                          onclick="updateExpensesFrequency('Monthly','mortgage-rent-frequency')"
+                          onclick="updateExpensesFrequency('Monthly','mortgage-rent-frequency-dropdown')"
                           >Monthly</a
                         >
                       </li>
@@ -564,7 +550,7 @@
                       data-bs-toggle="dropdown"
                       aria-expanded="false"
                     >
-                      Frequency
+                      Select Frequency
                     </button>
                     <ul
                       class="dropdown-menu"
@@ -573,14 +559,14 @@
                       <li>
                         <a
                           class="dropdown-item"
-                          onclick="updateExpensesFrequency('Bi-Weekly', 'house-insurance-frequency')"
+                          onclick="updateExpensesFrequency('Bi-Weekly', 'house-insurance-frequency-dropdown')"
                           >Bi-Weekly</a
                         >
                       </li>
                       <li>
                         <a
                           class="dropdown-item"
-                          onclick="updateExpensesFrequency('Monthly','house-insurance-frequency')"
+                          onclick="updateExpensesFrequency('Monthly','house-insurance-frequency-dropdown')"
                           >Monthly</a
                         >
                       </li>
@@ -617,7 +603,7 @@
                       data-bs-toggle="dropdown"
                       aria-expanded="false"
                     >
-                      Frequency
+                      Select Frequency
                     </button>
                     <ul
                       class="dropdown-menu"
@@ -626,14 +612,14 @@
                       <li>
                         <a
                           class="dropdown-item"
-                          onclick="updateExpensesFrequency('Bi-Weekly', 'car-payments-frequency')"
+                          onclick="updateExpensesFrequency('Bi-Weekly', 'car-payments-frequency-dropdown')"
                           >Bi-Weekly</a
                         >
                       </li>
                       <li>
                         <a
                           class="dropdown-item"
-                          onclick="updateExpensesFrequency('Monthly', 'car-payments-frequency')"
+                          onclick="updateExpensesFrequency('Monthly', 'car-payments-frequency-dropdown')"
                           >Monthly</a
                         >
                       </li>
@@ -670,7 +656,7 @@
                       data-bs-toggle="dropdown"
                       aria-expanded="false"
                     >
-                      Frequency
+                      Select Frequency
                     </button>
                     <ul
                       class="dropdown-menu"
@@ -679,14 +665,14 @@
                       <li>
                         <a
                           class="dropdown-item"
-                          onclick="updateExpensesFrequency('Bi-Weekly', 'car-insurance-frequency')"
+                          onclick="updateExpensesFrequency('Bi-Weekly', 'car-insurance-frequency-dropdown')"
                           >Bi-Weekly</a
                         >
                       </li>
                       <li>
                         <a
                           class="dropdown-item"
-                          onclick="updateExpensesFrequency('Monthly','car-insurance-frequency')"
+                          onclick="updateExpensesFrequency('Monthly','car-insurance-frequency-dropdown')"
                           >Monthly</a
                         >
                       </li>
@@ -723,7 +709,7 @@
                       data-bs-toggle="dropdown"
                       aria-expanded="false"
                     >
-                      Frequency
+                      Select Frequency
                     </button>
                     <ul
                       class="dropdown-menu"
@@ -732,14 +718,14 @@
                       <li>
                         <a
                           class="dropdown-item"
-                          onclick="updateExpensesFrequency('Bi-Weekly', 'health-insurance-frequency')"
+                          onclick="updateExpensesFrequency('Bi-Weekly', 'health-insurance-frequency-dropdown')"
                           >Bi-Weekly</a
                         >
                       </li>
                       <li>
                         <a
                           class="dropdown-item"
-                          onclick="updateExpensesFrequency('Monthly', 'health-insurance-frequency')"
+                          onclick="updateExpensesFrequency('Monthly', 'health-insurance-frequency-dropdown')"
                           >Monthly</a
                         >
                       </li>
@@ -777,7 +763,7 @@
                       data-bs-toggle="dropdown"
                       aria-expanded="false"
                     >
-                      Frequency
+                      Select Frequency
                     </button>
                     <ul
                       class="dropdown-menu"
@@ -786,14 +772,14 @@
                       <li>
                         <a
                           class="dropdown-item"
-                          onclick="updateExpensesFrequency('Bi-Weekly', 'vision-frequency')"
+                          onclick="updateExpensesFrequency('Bi-Weekly', 'vision-frequency-dropdown')"
                           >Bi-Weekly</a
                         >
                       </li>
                       <li>
                         <a
                           class="dropdown-item"
-                          onclick="updateExpensesFrequency('Monthly', 'vision-frequency')"
+                          onclick="updateExpensesFrequency('Monthly', 'vision-frequency-dropdown')"
                           >Monthly</a
                         >
                       </li>
@@ -831,7 +817,7 @@
                       data-bs-toggle="dropdown"
                       aria-expanded="false"
                     >
-                      Frequency
+                      Select Frequency
                     </button>
                     <ul
                       class="dropdown-menu"
@@ -840,14 +826,14 @@
                       <li>
                         <a
                           class="dropdown-item"
-                          onclick="updateExpensesFrequency('Bi-Weekly', 'dental-frequency')"
+                          onclick="updateExpensesFrequency('Bi-Weekly', 'dental-frequency-dropdown')"
                           >Bi-Weekly</a
                         >
                       </li>
                       <li>
                         <a
                           class="dropdown-item"
-                          onclick="updateExpensesFrequency('Monthly', 'dental-frequency')"
+                          onclick="updateExpensesFrequency('Monthly', 'dental-frequency-dropdown')"
                           >Monthly</a
                         >
                       </li>
@@ -888,7 +874,7 @@
                       data-bs-toggle="dropdown"
                       aria-expanded="false"
                     >
-                      Frequency
+                      Select Frequency
                     </button>
                     <ul
                       class="dropdown-menu"
@@ -897,14 +883,14 @@
                       <li>
                         <a
                           class="dropdown-item"
-                          onclick="updateExpensesFrequency('Bi-Weekly', 'electricity-frequency')"
+                          onclick="updateExpensesFrequency('Bi-Weekly', 'electricity-frequency-dropdown')"
                           >Bi-Weekly</a
                         >
                       </li>
                       <li>
                         <a
                           class="dropdown-item"
-                          onclick="updateExpensesFrequency('Monthly', 'electricity-frequency')"
+                          onclick="updateExpensesFrequency('Monthly', 'electricity-frequency-dropdown')"
                           >Monthly</a
                         >
                       </li>
@@ -941,7 +927,7 @@
                       data-bs-toggle="dropdown"
                       aria-expanded="false"
                     >
-                      Frequency
+                      Select Frequency
                     </button>
                     <ul
                       class="dropdown-menu"
@@ -950,14 +936,14 @@
                       <li>
                         <a
                           class="dropdown-item"
-                          onclick="updateExpensesFrequency('Bi-Weekly', 'water-frequency')"
+                          onclick="updateExpensesFrequency('Bi-Weekly', 'water-frequency-dropdown')"
                           >Bi-Weekly</a
                         >
                       </li>
                       <li>
                         <a
                           class="dropdown-item"
-                          onclick="updateExpensesFrequency('Monthly', 'waste-disposal')"
+                          onclick="updateExpensesFrequency('Monthly', 'water-frequency-dropdown')"
                           >Monthly</a
                         >
                       </li>
@@ -994,7 +980,7 @@
                       data-bs-toggle="dropdown"
                       aria-expanded="false"
                     >
-                      Frequency
+                      Select Frequency
                     </button>
                     <ul
                       class="dropdown-menu"
@@ -1003,14 +989,14 @@
                       <li>
                         <a
                           class="dropdown-item"
-                          onclick="updateExpensesFrequency('Bi-Weekly', 'sewer-frequency')"
+                          onclick="updateExpensesFrequency('Bi-Weekly', 'sewer-frequency-dropdown')"
                           >Bi-Weekly</a
                         >
                       </li>
                       <li>
                         <a
                           class="dropdown-item"
-                          onclick="updateExpensesFrequency('Monthly', 'sewer-frequency')"
+                          onclick="updateExpensesFrequency('Monthly', 'sewer-frequency-dropdown')"
                           >Monthly</a
                         >
                       </li>
@@ -1047,7 +1033,7 @@
                       data-bs-toggle="dropdown"
                       aria-expanded="false"
                     >
-                      Frequency
+                      Select Frequency
                     </button>
                     <ul
                       class="dropdown-menu"
@@ -1056,14 +1042,14 @@
                       <li>
                         <a
                           class="dropdown-item"
-                          onclick="updateExpensesFrequency('Bi-Weekly', 'gas-frequency')"
+                          onclick="updateExpensesFrequency('Bi-Weekly', 'gas-frequency-dropdown')"
                           >Bi-Weekly</a
                         >
                       </li>
                       <li>
                         <a
                           class="dropdown-item"
-                          onclick="updateExpensesFrequency('Monthly', 'gas-frequency')"
+                          onclick="updateExpensesFrequency('Monthly', 'gas-frequency-dropdown')"
                           >Monthly</a
                         >
                       </li>
@@ -1100,7 +1086,7 @@
                       data-bs-toggle="dropdown"
                       aria-expanded="false"
                     >
-                      Frequency
+                      Select Frequency
                     </button>
                     <ul
                       class="dropdown-menu"
@@ -1109,14 +1095,14 @@
                       <li>
                         <a
                           class="dropdown-item"
-                          onclick="updateExpensesFrequency('Bi-Weekly', 'waste-disposal-frequency')"
+                          onclick="updateExpensesFrequency('Bi-Weekly', 'waste-disposal-frequency-dropdown')"
                           >Bi-Weekly</a
                         >
                       </li>
                       <li>
                         <a
                           class="dropdown-item"
-                          onclick="updateExpensesFrequency('Monthly', 'waste-disposal-frequency')"
+                          onclick="updateExpensesFrequency('Monthly', 'waste-disposal-frequency-dropdown')"
                           >Monthly</a
                         >
                       </li>
@@ -1153,7 +1139,7 @@
                       data-bs-toggle="dropdown"
                       aria-expanded="false"
                     >
-                      Frequency
+                      Select Frequency
                     </button>
                     <ul
                       class="dropdown-menu"
@@ -1162,14 +1148,14 @@
                       <li>
                         <a
                           class="dropdown-item"
-                          onclick="updateExpensesFrequency('Bi-Weekly', 'internet-frequency')"
+                          onclick="updateExpensesFrequency('Bi-Weekly', 'internet-frequency-dropdown')"
                           >Bi-Weekly</a
                         >
                       </li>
                       <li>
                         <a
                           class="dropdown-item"
-                          onclick="updateExpensesFrequency('Monthly', 'internet-frequency')"
+                          onclick="updateExpensesFrequency('Monthly', 'internet-frequency-dropdown')"
                           >Monthly</a
                         >
                       </li>
@@ -1212,7 +1198,7 @@
                       data-bs-toggle="dropdown"
                       aria-expanded="false"
                     >
-                      Frequency
+                      Select Frequency
                     </button>
                     <ul
                       class="dropdown-menu"
@@ -1221,14 +1207,14 @@
                       <li>
                         <a
                           class="dropdown-item"
-                          onclick="updateExpensesFrequency('Bi-Weekly', 'shopping-frequency')"
+                          onclick="updateExpensesFrequency('Bi-Weekly', 'shopping-frequency-dropdown')"
                           >Bi-Weekly</a
                         >
                       </li>
                       <li>
                         <a
                           class="dropdown-item"
-                          onclick="updateExpensesFrequency('Monthly', 'shopping-frequency')"
+                          onclick="updateExpensesFrequency('Monthly', 'shopping-frequency-dropdown')"
                           >Monthly</a
                         >
                       </li>
@@ -1267,7 +1253,7 @@
                       data-bs-toggle="dropdown"
                       aria-expanded="false"
                     >
-                      Frequency
+                      Select Frequency
                     </button>
                     <ul
                       class="dropdown-menu"
@@ -1276,14 +1262,14 @@
                       <li>
                         <a
                           class="dropdown-item"
-                          onclick="updateExpensesFrequency('Bi-Weekly', 'ordering-in-dining-out-frequency')"
+                          onclick="updateExpensesFrequency('Bi-Weekly', 'ordering-in-dining-out-frequency-dropdown')"
                           >Bi-Weekly</a
                         >
                       </li>
                       <li>
                         <a
                           class="dropdown-item"
-                          onclick="updateExpensesFrequency('Monthly', 'ordering-in-dining-out-frequency')"
+                          onclick="updateExpensesFrequency('Monthly', 'ordering-in-dining-out-frequency-dropdown')"
                           >Monthly</a
                         >
                       </li>
@@ -1320,7 +1306,7 @@
                       data-bs-toggle="dropdown"
                       aria-expanded="false"
                     >
-                      Frequency
+                      Select Frequency
                     </button>
                     <ul
                       class="dropdown-menu"
@@ -1329,14 +1315,14 @@
                       <li>
                         <a
                           class="dropdown-item"
-                          onclick="updateExpensesFrequency('Bi-Weekly', 'date-nights-frequency')"
+                          onclick="updateExpensesFrequency('Bi-Weekly', 'date-nights-frequency-dropdown')"
                           >Bi-Weekly</a
                         >
                       </li>
                       <li>
                         <a
                           class="dropdown-item"
-                          onclick="updateExpensesFrequency('Monthly', 'date-nights-frequency')"
+                          onclick="updateExpensesFrequency('Monthly', 'date-nights-frequency-dropdown')"
                           >Monthly</a
                         >
                       </li>
@@ -1373,7 +1359,7 @@
                       data-bs-toggle="dropdown"
                       aria-expanded="false"
                     >
-                      Frequency
+                      Select Frequency
                     </button>
                     <ul
                       class="dropdown-menu"
@@ -1382,14 +1368,14 @@
                       <li>
                         <a
                           class="dropdown-item"
-                          onclick="updateExpensesFrequency('Bi-Weekly', 'family-date-nights-frequency')"
+                          onclick="updateExpensesFrequency('Bi-Weekly', 'family-date-nights-frequency-dropdown')"
                           >Bi-Weekly</a
                         >
                       </li>
                       <li>
                         <a
                           class="dropdown-item"
-                          onclick="updateExpensesFrequency('Monthly', 'family-date-nights-frequency')"
+                          onclick="updateExpensesFrequency('Monthly', 'family-date-nights-frequency-dropdown')"
                           >Monthly</a
                         >
                       </li>
@@ -1426,7 +1412,7 @@
                       data-bs-toggle="dropdown"
                       aria-expanded="false"
                     >
-                      Frequency
+                      Select Frequency
                     </button>
                     <ul
                       class="dropdown-menu"
@@ -1435,14 +1421,14 @@
                       <li>
                         <a
                           class="dropdown-item"
-                          onclick="updateExpensesFrequency('Bi-Weekly', 'clothes-frequency')"
+                          onclick="updateExpensesFrequency('Bi-Weekly', 'clothes-frequency-dropdown')"
                           >Bi-Weekly</a
                         >
                       </li>
                       <li>
                         <a
                           class="dropdown-item"
-                          onclick="updateExpensesFrequency('Monthly', 'clothes-frequency')"
+                          onclick="updateExpensesFrequency('Monthly', 'clothes-frequency-dropdown')"
                           >Monthly</a
                         >
                       </li>
@@ -1479,7 +1465,7 @@
                       data-bs-toggle="dropdown"
                       aria-expanded="false"
                     >
-                      Frequency
+                      Select Frequency
                     </button>
                     <ul
                       class="dropdown-menu"
@@ -1488,14 +1474,14 @@
                       <li>
                         <a
                           class="dropdown-item"
-                          onclick="updateExpensesFrequency('Bi-Weekly', 'shoes-frequency')"
+                          onclick="updateExpensesFrequency('Bi-Weekly', 'shoes-frequency-dropdown')"
                           >Bi-Weekly</a
                         >
                       </li>
                       <li>
                         <a
                           class="dropdown-item"
-                          onclick="updateExpensesFrequency('Monthly', 'shoes-frequency')"
+                          onclick="updateExpensesFrequency('Monthly', 'shoes-frequency-dropdown')"
                           >Monthly</a
                         >
                       </li>
@@ -1532,7 +1518,7 @@
                       data-bs-toggle="dropdown"
                       aria-expanded="false"
                     >
-                      Frequency
+                      Select Frequency
                     </button>
                     <ul
                       class="dropdown-menu"
@@ -1541,14 +1527,14 @@
                       <li>
                         <a
                           class="dropdown-item"
-                          onclick="updateExpensesFrequency('Bi-Weekly', 'haircuts-frequency')"
+                          onclick="updateExpensesFrequency('Bi-Weekly', 'haircuts-frequency-dropdown')"
                           >Bi-Weekly</a
                         >
                       </li>
                       <li>
                         <a
                           class="dropdown-item"
-                          onclick="updateExpensesFrequency('Monthly', 'haircuts-frequency')"
+                          onclick="updateExpensesFrequency('Monthly', 'haircuts-frequency-dropdown')"
                           >Monthly</a
                         >
                       </li>
@@ -1587,7 +1573,7 @@
                       data-bs-toggle="dropdown"
                       aria-expanded="false"
                     >
-                      Frequency
+                      Select Frequency
                     </button>
                     <ul
                       class="dropdown-menu"
@@ -1596,14 +1582,14 @@
                       <li>
                         <a
                           class="dropdown-item"
-                          onclick="updateExpensesFrequency('Bi-Weekly', 'transportation-frequency')"
+                          onclick="updateExpensesFrequency('Bi-Weekly', 'transportation-frequency-dropdown')"
                           >Bi-Weekly</a
                         >
                       </li>
                       <li>
                         <a
                           class="dropdown-item"
-                          onclick="updateExpensesFrequency('Monthly', 'transportation-frequency')"
+                          onclick="updateExpensesFrequency('Monthly', 'transportation-frequency-dropdown')"
                           >Monthly</a
                         >
                       </li>
@@ -1640,7 +1626,7 @@
                       data-bs-toggle="dropdown"
                       aria-expanded="false"
                     >
-                      Frequency
+                      Select Frequency
                     </button>
                     <ul
                       class="dropdown-menu"
@@ -1649,14 +1635,14 @@
                       <li>
                         <a
                           class="dropdown-item"
-                          onclick="updateExpensesFrequency('Bi-Weekly', 'daycare-frequency')"
+                          onclick="updateExpensesFrequency('Bi-Weekly', 'daycare-frequency-dropdown')"
                           >Bi-Weekly</a
                         >
                       </li>
                       <li>
                         <a
                           class="dropdown-item"
-                          onclick="updateExpensesFrequency('Monthly', 'daycare-frequency')"
+                          onclick="updateExpensesFrequency('Monthly', 'daycare-frequency-dropdown')"
                           >Monthly</a
                         >
                       </li>
@@ -1696,7 +1682,7 @@
                         data-bs-toggle="dropdown"
                         aria-expanded="false"
                       >
-                        Frequency
+                        Select Frequency
                       </button>
                       <ul
                         class="dropdown-menu"
@@ -1705,14 +1691,14 @@
                         <li>
                           <a
                             class="dropdown-item"
-                            onclick="updateExpensesFrequency('Bi-Weekly', 'savings-frequency')"
+                            onclick="updateExpensesFrequency('Bi-Weekly', 'savings-frequency-dropdown')"
                             >Bi-Weekly</a
                           >
                         </li>
                         <li>
                           <a
                             class="dropdown-item"
-                            onclick="updateExpensesFrequency('Monthly', 'savings-frequency')"
+                            onclick="updateExpensesFrequency('Monthly', 'savings-frequency-dropdown')"
                             >Monthly</a
                           >
                         </li>
@@ -1749,7 +1735,7 @@
                         data-bs-toggle="dropdown"
                         aria-expanded="false"
                       >
-                        Frequency
+                        Select Frequency
                       </button>
                       <ul
                         class="dropdown-menu"
@@ -1758,14 +1744,14 @@
                         <li>
                           <a
                             class="dropdown-item"
-                            onclick="updateExpensesFrequency('Bi-Weekly', 'emergency-fund-frequency')"
+                            onclick="updateExpensesFrequency('Bi-Weekly', 'emergency-fund-frequency-dropdown')"
                             >Bi-Weekly</a
                           >
                         </li>
                         <li>
                           <a
                             class="dropdown-item"
-                            onclick="updateExpensesFrequency('Monthly', 'electricity-frequency')"
+                            onclick="updateExpensesFrequency('Monthly', 'electricity-frequency-dropdown')"
                             >Monthly</a
                           >
                         </li>
@@ -1802,7 +1788,7 @@
                         data-bs-toggle="dropdown"
                         aria-expanded="false"
                       >
-                        Frequency
+                        Select Frequency
                       </button>
                       <ul
                         class="dropdown-menu"
@@ -1811,14 +1797,14 @@
                         <li>
                           <a
                             class="dropdown-item"
-                            onclick="updateExpensesFrequency('Bi-Weekly', 'miscellaneous-frequency')"
+                            onclick="updateExpensesFrequency('Bi-Weekly', 'miscellaneous-frequency-dropdown')"
                             >Bi-Weekly</a
                           >
                         </li>
                         <li>
                           <a
                             class="dropdown-item"
-                            onclick="updateExpensesFrequency('Monthly', 'miscellaneous-frequency')"
+                            onclick="updateExpensesFrequency('Monthly', 'miscellaneous-frequency-dropdown')"
                             >Monthly</a
                           >
                         </li>
@@ -1843,10 +1829,8 @@
         <div id="summary" class="tab-pane fade">
           <h3>All Done!</h3>
           <p>Here is your budget summary</p>
-          <div style="width: 400px; height: 400px;">
-            <canvas id="incomeExpenseChart"></canvas>
-        </div>
-        
+          <canvas id="budgetSummaryChart"></canvas>
+          <canvas id="expenseBreakdownPieChart"></canvas>
         </div>
       </div>
     </div>
