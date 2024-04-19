@@ -41,36 +41,52 @@ function initializeExpenseBreakdownPieChart() {
     const canvas = document.getElementById("expenseBreakdownPieChart");
     const ctx = canvas.getContext("2d");
 
-    // Destroy the existing chart instance if it exists
     if (expenseBreakdownChart) {
         expenseBreakdownChart.destroy();
     }
 
-    // Create a new instance of the chart
+    const data = gatherExpenseData();
+    const totalAmount = data.reduce((acc, item) => acc + item.amount, 0);
+
+    // More visually appealing color palette
+    const colors = [
+        "#FF6384", "#36A2EB", "#FFCE56", "#4BC0C0", "#9966FF", "#FF9F40",
+        "#FFCD56", "#4D5360", "#C9CBFF", "#FFB347", "#C7C7C7", "#BDB76B"
+    ];
+
+    // Generate dynamic colors if needed
+    while (colors.length < data.length) {
+        const randomColor = Math.floor(Math.random()*16777215).toString(16);
+        colors.push(`#${randomColor}`);
+    }
+
     expenseBreakdownChart = new Chart(ctx, {
         type: "pie",
         data: {
-            labels: gatherExpenseData().map(e => e.name),
+            labels: data.map(e => e.name),
             datasets: [{
-                label: "Expense Breakdown",
-                data: gatherExpenseData().map(e => e.amount),
-                backgroundColor: [
-                    "rgba(255, 99, 132, 0.5)",
-                    "rgba(54, 162, 235, 0.5)",
-                    "rgba(255, 206, 86, 0.5)",
-                    // More colors as needed
-                ],
-                borderColor: [
-                    "rgba(255, 99, 132, 1)",
-                    "rgba(54, 162, 235, 1)",
-                    "rgba(255, 206, 86, 1)"
-                ],
-                borderWidth: 1
+                data: data.map(e => e.amount),
+                backgroundColor: colors,
+                borderColor: colors.map(color => color.replace('0.5', '1')),
+                borderWidth: 2,
+                hoverOffset: 10
             }]
         },
         options: {
             responsive: true,
-            maintainAspectRatio: true
+            maintainAspectRatio: true,
+            plugins: {
+                tooltip: {
+                    callbacks: {
+                        label: function(tooltipItem) {
+                            const label = data[tooltipItem.dataIndex].name || '';
+                            const currentValue = tooltipItem.raw;
+                            const percentage = ((currentValue / totalAmount) * 100).toFixed(0);
+                            return `${label}: ${percentage}%`;
+                        }
+                    }
+                }
+            }
         }
     });
 }
@@ -83,25 +99,47 @@ function gatherExpenseData() {
         { name: "Car Payments", amount: getAdjustedAmount("car-payments-amount", "car-payments-frequency") },
         { name: "Car Insurance", amount: getAdjustedAmount("car-insurance-amount", "car-insurance-frequency") },
         { name: "Health Insurance", amount: getAdjustedAmount("health-insurance-amount", "health-insurance-frequency") },
-        // Add more categories as needed...
-    ];
+        { name: "Vision", amount: getAdjustedAmount("vision-amount", "vision-frequency") },
+        { name: "Dental", amount: getAdjustedAmount("dental-amount", "dental-frequency") },
+        { name: "Electricity", amount: getAdjustedAmount("electricity-amount", "electricity-frequency") },
+        { name: "Water", amount: getAdjustedAmount("water-amount", "water-frequency") },
+        { name: "Sewer", amount: getAdjustedAmount("sewer-amount", "sewer-frequency") },
+        { name: "Gas", amount: getAdjustedAmount("gas-amount", "gas-frequency") },
+        { name: "Waste Disposal", amount: getAdjustedAmount("waste-disposal-amount", "waste-disposal-frequency") },
+        { name: "Internet", amount: getAdjustedAmount("internet-amount", "internet-frequency") },
+        { name: "Shopping", amount: getAdjustedAmount("shopping-amount", "shopping-frequency") },
+        { name: "Ordering In or Dining Out", amount: getAdjustedAmount("ordering-in-dining-out-amount", "ordering-in-dining-out-frequency") },
+        { name: "Date Nights", amount: getAdjustedAmount("date-nights-amount", "date-nights-frequency") },
+        { name: "Family Date Nights", amount: getAdjustedAmount("family-date-nights-amount", "family-date-nights-frequency") },
+        { name: "Clothes", amount: getAdjustedAmount("clothes-amount", "clothes-frequency") },
+        { name: "Shoes", amount: getAdjustedAmount("shoes-amount", "shoes-frequency") },
+        { name: "Haircut", amount: getAdjustedAmount("haircuts-amount", "haircuts-frequency") },
+        { name: "Transportation", amount: getAdjustedAmount("transportation-amount", "transportation-frequency") },
+        { name: "Daycare", amount: getAdjustedAmount("daycare-amount", "daycare-frequency") },
+        { name: "Savings", amount: getAdjustedAmount("savings-amount", "savings-frequency") },
+        { name: "Emergency Fund", amount: getAdjustedAmount("emergency-fund-amount", "emergency-fund-frequency") },
+        { name: "Miscellaneous", amount: getAdjustedAmount("miscellaneous-amount", "miscellaneous-frequency") }
+    ].filter(item => item.amount > 0);
+    
     console.log("Expense Data for Chart:", data);
     return data;
 }
 
 function getAdjustedAmount(amountId, frequencyId) {
-    let amount = parseFloat(document.getElementById(amountId).value) || 0;
+    let amount = parseFloat(document.getElementById(amountId).value) || 0; // Use 0 as default if the value is not a number
     const frequencyElement = document.getElementById(frequencyId);
-    const frequency = frequencyElement ? frequencyElement.value : "Monthly";
+    const frequency = frequencyElement ? frequencyElement.value : "Monthly"; // Default to "Monthly" if frequency isn't specified
 
     console.log(`Fetching amount for ${amountId}, frequency: ${frequency}, original amount: ${amount}`);
 
     if (frequency === "Bi-Weekly") {
-        amount *= 2;  // Double the amount for bi-weekly
+        amount *= 26; // Adjust the amount for bi-weekly payments (26 bi-weekly periods in a year)
         console.log(`Adjusted amount for bi-weekly: ${amount}`);
     }
+
     return amount;
 }
+
 
 document.addEventListener("DOMContentLoaded", function () {
 	// Setup listeners for all dropdown items and form inputs

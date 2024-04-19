@@ -99,7 +99,7 @@
                 section. Next, list your expenses, categorizing them by type.
                 This tool will calculate your total income and expenses, giving
                 you a clear picture of your budget. Feel free to adjust as
-                needed. Happy budgeting!
+                needed, happy budgeting!
               </p>
             </blockquote>
           </figure>
@@ -1827,10 +1827,17 @@
         </div>
 
         <div id="summary" class="tab-pane fade">
-          <h3>All Done!</h3>
-          <p>Here is your budget summary</p>
-          <canvas id="budgetSummaryChart"></canvas>
-          <canvas id="expenseBreakdownPieChart"></canvas>
+          <h3>All done calculating.
+            <br>
+            Here's your budget summary:</h3>
+          <div id="summaryMessage"></div>
+          <div style="width: 600px; height: 400px;">
+            <canvas id="budgetSummaryChart"></canvas>
+          </div>
+          <h3>Here's a breakdown of your spending habits:</h3>
+          <div style="width: 600px; height: 400px;">
+            <canvas id="expenseBreakdownPieChart"></canvas>
+          </div>
         </div>
       </div>
     </div>
