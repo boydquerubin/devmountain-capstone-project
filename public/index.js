@@ -121,7 +121,7 @@ function gatherExpenseData() {
         { name: "Miscellaneous", amount: getAdjustedAmount("miscellaneous-amount", "miscellaneous-frequency") }
     ].filter(item => item.amount > 0);
     
-    console.log("Expense Data for Chart:", data);
+    // console.log("Expense Data for Chart:", data);
     return data;
 }
 
@@ -130,7 +130,7 @@ function getAdjustedAmount(amountId, frequencyId) {
     const frequencyElement = document.getElementById(frequencyId);
     const frequency = frequencyElement ? frequencyElement.value : "Monthly"; // Default to "Monthly" if frequency isn't specified
 
-    console.log(`Fetching amount for ${amountId}, frequency: ${frequency}, original amount: ${amount}`);
+    // console.log(`Fetching amount for ${amountId}, frequency: ${frequency}, original amount: ${amount}`);
 
     if (frequency === "Bi-Weekly") {
         amount *= 26; // Adjust the amount for bi-weekly payments (26 bi-weekly periods in a year)
@@ -166,6 +166,7 @@ document.addEventListener("DOMContentLoaded", function () {
         document.querySelectorAll('.expense-frequency-selector').forEach(selector => {
             selector.addEventListener('change', function() {
                 initializeExpenseBreakdownPieChart();  // Recalculate the chart when frequency changes
+                updateSummaryMessage();
             });
         });        
 
@@ -195,6 +196,7 @@ document.addEventListener("DOMContentLoaded", function () {
 				console.log("Summary tab shown, initializing chart");
 				initializeBudgetSummaryChart();
 				initializeExpenseBreakdownPieChart();
+                updateSummaryMessage();
 			});
 		isSummaryListenerSet = true;
 	}
@@ -307,6 +309,8 @@ function updateTotalIncome(selectedFrequency) {
 	document.getElementById("total-income").textContent = `$${totalIncome.toFixed(
 		2
 	)}`;
+    document.getElementById("total-income").textContent = `$${totalIncome.toFixed(2)}`;
+    updateSummaryMessage();  // Update the summary message whenever total income updates
 }
 
 function updateTotalExpenses(expensesFrequency) {
@@ -322,4 +326,30 @@ function updateTotalExpenses(expensesFrequency) {
 	document.getElementById(
 		"total-expenses"
 	).textContent = `$${totalExpenses.toFixed(2)}`;
+    document.getElementById("total-expenses").textContent = `$${totalExpenses.toFixed(2)}`;
+    updateSummaryMessage();  // Update the summary message whenever total expenses updates
 }
+
+function updateSummaryMessage() {
+    const income = parseFloat(document.getElementById("total-income").textContent.replace('$', '')) || 0;
+    const expenses = parseFloat(document.getElementById("total-expenses").textContent.replace('$', '')) || 0;
+
+    const messageElement = document.getElementById("summaryMessage");
+
+    if (income > expenses) {
+        messageElement.textContent = "Good job! Your income exceeds your expenses.";
+        messageElement.style.color = "green";
+    } else if (expenses > income) {
+        messageElement.textContent = "Uh-oh! Your expenses exceed your income.";
+        messageElement.style.color = "red";
+    } else {
+        messageElement.textContent = "Your income and expenses are balanced.";
+        messageElement.style.color = "black";
+    }
+}
+
+window.onload = function() {
+    initializeBudgetSummaryChart();  // Initial chart setups
+    initializeExpenseBreakdownPieChart();
+    updateSummaryMessage();  // Initial message update
+};
