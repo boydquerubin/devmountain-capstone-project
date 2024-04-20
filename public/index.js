@@ -494,7 +494,3 @@ window.onload = function () {
   initializeExpenseBreakdownPieChart();
   updateSummaryMessage(); // Initial message update
 };
-
-function newFunction() {
-  console.log("this is a sample lol");
-}
