@@ -98,12 +98,12 @@ function calculateTotalMonthlyIncome() {
 		let income = incomes[id];
 		let multiplier = getFrequencyMultiplier(income.frequency);
 		let monthlyIncome = income.amount * multiplier;
-		console.log(
-			`ID: ${id}, Amount: ${income.amount}, Multiplier: ${multiplier}, MonthlyIncome: ${monthlyIncome}`
-		);
+		// console.log(
+		// 	`ID: ${id}, Amount: ${income.amount}, Multiplier: ${multiplier}, MonthlyIncome: ${monthlyIncome}`
+		// );
 		totalMonthlyIncome += monthlyIncome;
 	});
-	console.log(`Total Monthly Income: ${totalMonthlyIncome}`);
+	// console.log(`Total Monthly Income: ${totalMonthlyIncome}`);
 	return totalMonthlyIncome;
 }
 

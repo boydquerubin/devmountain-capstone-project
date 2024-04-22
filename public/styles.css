@@ -30,8 +30,7 @@ h3 {
 	background-color: azure;
 	min-height: 60vh;
 	padding: 4rem;
-	padding-left: 6rem;
-	padding-right: 6rem;
+	overflow: auto;
 }
 
 .input-container {
@@ -59,7 +58,7 @@ footer {
 	color: rgb(0, 204, 255);
 }
 
-.next-tab-button {
+.action-button {
 	background-color: rgb(0, 190, 238); /* Bootstrap primary blue */
 	color: azure;
 	border: none;
@@ -76,23 +75,19 @@ footer {
 	transition: background-color 0.3s ease;
 }
 
-.next-tab-button:hover {
-	background-color: #238eff; /* A darker blue on hover */
+.action-button:hover {
+	background-color: #238eff;
 }
 
-.next-tab-button i {
-	margin-left: 10px; /* Space between text and icon */
+.action-button i {
+	margin-left: 10px;
 }
 
 .button-container {
 	display: flex;
-	justify-content: end; /* Aligns children (buttons) to the right */
+	justify-content: end;
+	margin-top: 2rem;
 }
-
-/* #incomeExpenseChart {
-	width: 100% !important;
-	height: auto !important;
-} */
 
 #budgetSummaryChart {
 	width: 100%;
@@ -121,6 +116,4 @@ footer {
 	justify-content: space-evenly;
 	align-items: flex-start;
 	text-align: center;
-	/* flex-wrap: wrap; */
-	/* align-content: space-evenly; */
 }
