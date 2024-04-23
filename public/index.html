@@ -68,7 +68,7 @@
 						</li>
 					</ul>
 				</div>
-				<form class="d-flex">
+				<form id="search-id" class="d-flex">
 					<input type="text" class="form-control me-2" />
 					<button type="submit" class="btn-primary">Search</button>
 				</form>
@@ -165,1539 +165,15 @@
 				</div>
 
 				<div id="income" class="tab-pane fade">
-					<div class="income-section">
-						<h3>Primary Income</h3>
-
-						<div class="row align-items-center">
-							<div class="col">
-								<div class="input-group mb-3">
-									<div class="input-group-prepend">
-										<span class="input-group-text">Payroll</span>
-									</div>
-								</div>
-							</div>
-							<div class="col">
-								<div class="input-container grid gap-0 column-gap-3">
-									<input
-										type="text"
-										class="form-control mb-3"
-										id="payroll-amount"
-										aria-label="Dollar amount (with dot and two decimal places)"
-										placeholder="$0.00"
-										oninput="updateTotalIncome()"
-									/>
-
-									<div class="input-group mb-3">
-										<button
-											class="btn btn-outline-secondary dropdown-toggle"
-											type="button"
-											id="payroll-frequency-dropdown"
-											data-bs-toggle="dropdown"
-											aria-expanded="false"
-										>
-											Select Frequency
-										</button>
-										<ul
-											class="dropdown-menu"
-											aria-labelledby="payroll-frequency-dropdown"
-										>
-											<li>
-												<a
-													class="dropdown-item"
-													onclick="updateIncomeFrequency('Bi-Weekly', 'payroll-frequency-dropdown')"
-													>Bi-Weekly</a
-												>
-											</li>
-											<li>
-												<a
-													class="dropdown-item"
-													onclick="updateIncomeFrequency('Monthly', 'payroll-frequency-dropdown')"
-													>Monthly</a
-												>
-											</li>
-										</ul>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-
-					<div class="income-section">
-						<h3>Other Income</h3>
-						<div class="row align-items-center">
-							<div class="col">
-								<div class="input-group mb-3">
-									<div class="input-group-prepend">
-										<span class="input-group-text">Self-Employment</span>
-									</div>
-								</div>
-							</div>
-							<div class="col">
-								<div class="input-container grid gap-0 column-gap-3">
-									<input
-										type="text"
-										class="form-control mb-3"
-										id="self-employment-amount"
-										aria-label="Dollar amount (with dot and two decimal places)"
-										placeholder="$0.00"
-										oninput="updateTotalIncome()"
-									/>
-
-									<div class="input-group mb-3">
-										<button
-											class="btn btn-outline-secondary dropdown-toggle"
-											type="button"
-											id="self-employment-frequency-dropdown"
-											data-bs-toggle="dropdown"
-											aria-expanded="false"
-										>
-											Select Frequency
-										</button>
-										<ul
-											class="dropdown-menu"
-											aria-labelledby="self-employment-frequency-dropdown"
-										>
-											<li>
-												<a
-													class="dropdown-item"
-													onclick="updateIncomeFrequency('Bi-Weekly', 'self-employment-frequency-dropdown')"
-													>Bi-Weekly</a
-												>
-											</li>
-											<li>
-												<a
-													class="dropdown-item"
-													onclick="updateIncomeFrequency('Monthly', 'self-employment-frequency-dropdown')"
-													>Monthly</a
-												>
-											</li>
-										</ul>
-									</div>
-								</div>
-							</div>
-						</div>
-
-						<div class="row align-items-center">
-							<div class="col">
-								<div class="input-group mb-3">
-									<div class="input-group-prepend">
-										<span class="input-group-text">Property Rent</span>
-									</div>
-								</div>
-							</div>
-							<div class="col">
-								<div class="input-container grid gap-0 column-gap-3">
-									<input
-										type="text"
-										class="form-control mb-3"
-										id="property-rent-amount"
-										aria-label="Dollar amount (with dot and two decimal places)"
-										placeholder="$0.00"
-										oninput="updateTotalIncome()"
-									/>
-
-									<div class="input-group mb-3">
-										<button
-											class="btn btn-outline-secondary dropdown-toggle"
-											type="button"
-											id="property-rent-frequency-dropdown"
-											data-bs-toggle="dropdown"
-											aria-expanded="false"
-										>
-											Select Frequency
-										</button>
-										<ul
-											class="dropdown-menu"
-											aria-labelledby="property-rent-frequency-dropdown"
-										>
-											<li>
-												<a
-													class="dropdown-item"
-													onclick="updateIncomeFrequency('Bi-Weekly', 'property-rent-frequency-dropdown')"
-													>Bi-Weekly</a
-												>
-											</li>
-											<li>
-												<a
-													class="dropdown-item"
-													onclick="updateIncomeFrequency('Monthly', 'property-rent-frequency-dropdown')"
-													>Monthly</a
-												>
-											</li>
-										</ul>
-									</div>
-								</div>
-							</div>
-						</div>
-
-						<div class="row align-items-center">
-							<div class="col">
-								<div class="input-group mb-3">
-									<div class="input-group-prepend">
-										<span class="input-group-text">Financial Support</span>
-									</div>
-								</div>
-							</div>
-							<div class="col">
-								<div class="input-container grid gap-0 column-gap-3">
-									<input
-										type="text"
-										class="form-control mb-3"
-										id="financial-support-amount"
-										aria-label="Dollar amount (with dot and two decimal places)"
-										placeholder="$0.00"
-										oninput="updateTotalIncome()"
-									/>
-
-									<div class="input-group mb-3">
-										<button
-											class="btn btn-outline-secondary dropdown-toggle"
-											type="button"
-											id="financial-support-frequency-dropdown"
-											data-bs-toggle="dropdown"
-											aria-expanded="false"
-										>
-											Select Frequency
-										</button>
-										<ul
-											class="dropdown-menu"
-											aria-labelledby="financial-support-frequency-dropdown"
-										>
-											<li>
-												<a
-													class="dropdown-item"
-													onclick="updateIncomeFrequency('Bi-Weekly', 'financial-support-frequency-dropdown')"
-													>Bi-Weekly</a
-												>
-											</li>
-											<li>
-												<a
-													class="dropdown-item"
-													onclick="updateIncomeFrequency('Monthly', 'financial-support-frequency-dropdown')"
-													>Monthly</a
-												>
-											</li>
-										</ul>
-									</div>
-								</div>
-							</div>
-						</div>
-
-						<div class="row align-items-center">
-							<div class="col">
-								<div class="input-group mb-3">
-									<div class="input-group-prepend">
-										<span class="input-group-text">Pension</span>
-									</div>
-								</div>
-							</div>
-							<div class="col">
-								<div class="input-container grid gap-0 column-gap-3">
-									<input
-										type="text"
-										class="form-control mb-3"
-										id="pension-amount"
-										aria-label="Dollar amount (with dot and two decimal places)"
-										placeholder="$0.00"
-										oninput="updateTotalIncome()"
-									/>
-
-									<div class="input-group mb-3">
-										<button
-											class="btn btn-outline-secondary dropdown-toggle"
-											type="button"
-											id="pension-frequency-dropdown"
-											data-bs-toggle="dropdown"
-											aria-expanded="false"
-										>
-											Select Frequency
-										</button>
-										<ul
-											class="dropdown-menu"
-											aria-labelledby="pension-frequency-dropdown"
-										>
-											<li>
-												<a
-													class="dropdown-item"
-													onclick="updateIncomeFrequency('Bi-Weekly', 'pension-frequency-dropdown')"
-													>Bi-Weekly</a
-												>
-											</li>
-											<li>
-												<a
-													class="dropdown-item"
-													onclick="updateIncomeFrequency('Monthly', 'pension-frequency-dropdown')"
-													>Monthly</a
-												>
-											</li>
-										</ul>
-									</div>
-								</div>
-							</div>
-						</div>
-
-						<div class="row align-items-center">
-							<div class="col">
-								<div class="input-group mb-3">
-									<div class="input-group-prepend">
-										<span class="input-group-text">Other</span>
-									</div>
-								</div>
-							</div>
-							<div class="col">
-								<div class="input-container grid gap-0 column-gap-3">
-									<input
-										type="text"
-										class="form-control mb-3"
-										id="other-amount"
-										aria-label="Dollar amount (with dot and two decimal places)"
-										placeholder="$0.00"
-										oninput="updateTotalIncome()"
-									/>
-
-									<div class="input-group mb-3">
-										<button
-											class="btn btn-outline-secondary dropdown-toggle"
-											type="button"
-											id="other-frequency-dropdown"
-											data-bs-toggle="dropdown"
-											aria-expanded="false"
-										>
-											Select Frequency
-										</button>
-										<ul
-											class="dropdown-menu"
-											aria-labelledby="other-frequency-dropdown"
-										>
-											<li>
-												<a
-													class="dropdown-item"
-													onclick="updateIncomeFrequency('Bi-Weekly', 'other-frequency-dropdown')"
-													>Bi-Weekly</a
-												>
-											</li>
-											<li>
-												<a
-													class="dropdown-item"
-													onclick="updateIncomeFrequency('Monthly', 'other-frequency-dropdown')"
-													>Monthly</a
-												>
-											</li>
-										</ul>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="total-income-section">
-						<h3>Total Monthly Income</h3>
-						<h4 id="total-income">$0.00</h4>
-					</div>
-
-					<div class="button-container">
-						<button
-							class="btn btn-primary action-button input-bills-button"
-							data-next="#expenses"
-						>
-							Input Bills<i class="fas fa-chevron-right"></i>
-						</button>
-					</div>
-				</div>
-
-				<div id="expenses" class="tab-pane fade">
-					<div class="expenses-section">
-						<h3>Household</h3>
-
-						<div class="row align-items-center">
-							<div class="col">
-								<div class="input-group mb-3">
-									<div class="input-group-prepend">
-										<span class="input-group-text">Mortgage or Rent</span>
-									</div>
-								</div>
-							</div>
-							<div class="col">
-								<div class="input-container grid gap-0 column-gap-3">
-									<input
-										type="text"
-										class="form-control mb-3"
-										id="mortgage-rent-amount"
-										aria-label="Dollar amount (with dot and two decimal places)"
-										placeholder="$0.00"
-										oninput="updateTotalExpenses()"
-									/>
-
-									<div class="input-group mb-3">
-										<button
-											class="btn btn-outline-secondary dropdown-toggle"
-											type="button"
-											id="mortgage-rent-frequency-dropdown"
-											data-bs-toggle="dropdown"
-											aria-expanded="false"
-										>
-											Select Frequency
-										</button>
-										<ul
-											class="dropdown-menu"
-											aria-labelledby="mortgage-rent-frequency-dropdown"
-										>
-											<li>
-												<a
-													class="dropdown-item"
-													onclick="updateExpensesFrequency('Bi-Weekly', 'mortgage-rent-frequency-dropdown')"
-													>Bi-Weekly</a
-												>
-											</li>
-											<li>
-												<a
-													class="dropdown-item"
-													onclick="updateExpensesFrequency('Monthly','mortgage-rent-frequency-dropdown')"
-													>Monthly</a
-												>
-											</li>
-										</ul>
-									</div>
-								</div>
-							</div>
-						</div>
-
-						<div class="row align-items-center">
-							<div class="col">
-								<div class="input-group mb-3">
-									<div class="input-group-prepend">
-										<span class="input-group-text">House Insurance</span>
-									</div>
-								</div>
-							</div>
-							<div class="col">
-								<div class="input-container grid gap-0 column-gap-3">
-									<input
-										type="text"
-										class="form-control mb-3"
-										id="house-insurance-amount"
-										aria-label="Dollar amount (with dot and two decimal places)"
-										placeholder="$0.00"
-										oninput="updateTotalExpenses()"
-									/>
-
-									<div class="input-group mb-3">
-										<button
-											class="btn btn-outline-secondary dropdown-toggle"
-											type="button"
-											id="house-insurance-frequency-dropdown"
-											data-bs-toggle="dropdown"
-											aria-expanded="false"
-										>
-											Select Frequency
-										</button>
-										<ul
-											class="dropdown-menu"
-											aria-labelledby="house-insurance-frequency-dropdown"
-										>
-											<li>
-												<a
-													class="dropdown-item"
-													onclick="updateExpensesFrequency('Bi-Weekly', 'house-insurance-frequency-dropdown')"
-													>Bi-Weekly</a
-												>
-											</li>
-											<li>
-												<a
-													class="dropdown-item"
-													onclick="updateExpensesFrequency('Monthly','house-insurance-frequency-dropdown')"
-													>Monthly</a
-												>
-											</li>
-										</ul>
-									</div>
-								</div>
-							</div>
-						</div>
-
-						<div class="row align-items-center">
-							<div class="col">
-								<div class="input-group mb-3">
-									<div class="input-group-prepend">
-										<span class="input-group-text">Car Payments</span>
-									</div>
-								</div>
-							</div>
-							<div class="col">
-								<div class="input-container grid gap-0 column-gap-3">
-									<input
-										type="text"
-										class="form-control mb-3"
-										id="car-payments-amount"
-										aria-label="Dollar amount (with dot and two decimal places)"
-										placeholder="$0.00"
-										oninput="updateTotalExpenses()"
-									/>
-
-									<div class="input-group mb-3">
-										<button
-											class="btn btn-outline-secondary dropdown-toggle"
-											type="button"
-											id="car-payments-frequency-dropdown"
-											data-bs-toggle="dropdown"
-											aria-expanded="false"
-										>
-											Select Frequency
-										</button>
-										<ul
-											class="dropdown-menu"
-											aria-labelledby="car-payments-frequency-dropdown"
-										>
-											<li>
-												<a
-													class="dropdown-item"
-													onclick="updateExpensesFrequency('Bi-Weekly', 'car-payments-frequency-dropdown')"
-													>Bi-Weekly</a
-												>
-											</li>
-											<li>
-												<a
-													class="dropdown-item"
-													onclick="updateExpensesFrequency('Monthly', 'car-payments-frequency-dropdown')"
-													>Monthly</a
-												>
-											</li>
-										</ul>
-									</div>
-								</div>
-							</div>
-						</div>
-
-						<div class="row align-items-center">
-							<div class="col">
-								<div class="input-group mb-3">
-									<div class="input-group-prepend">
-										<span class="input-group-text">Car Insurance</span>
-									</div>
-								</div>
-							</div>
-							<div class="col">
-								<div class="input-container grid gap-0 column-gap-3">
-									<input
-										type="text"
-										class="form-control mb-3"
-										id="car-insurance-amount"
-										aria-label="Dollar amount (with dot and two decimal places)"
-										placeholder="$0.00"
-										oninput="updateTotalExpenses()"
-									/>
-
-									<div class="input-group mb-3">
-										<button
-											class="btn btn-outline-secondary dropdown-toggle"
-											type="button"
-											id="car-insurance-frequency-dropdown"
-											data-bs-toggle="dropdown"
-											aria-expanded="false"
-										>
-											Select Frequency
-										</button>
-										<ul
-											class="dropdown-menu"
-											aria-labelledby="car-insurance-frequency-dropdown"
-										>
-											<li>
-												<a
-													class="dropdown-item"
-													onclick="updateExpensesFrequency('Bi-Weekly', 'car-insurance-frequency-dropdown')"
-													>Bi-Weekly</a
-												>
-											</li>
-											<li>
-												<a
-													class="dropdown-item"
-													onclick="updateExpensesFrequency('Monthly','car-insurance-frequency-dropdown')"
-													>Monthly</a
-												>
-											</li>
-										</ul>
-									</div>
-								</div>
-							</div>
-						</div>
-
-						<div class="row align-items-center">
-							<div class="col">
-								<div class="input-group mb-3">
-									<div class="input-group-prepend">
-										<span class="input-group-text">Health Insurance</span>
-									</div>
-								</div>
-							</div>
-							<div class="col">
-								<div class="input-container grid gap-0 column-gap-3">
-									<input
-										type="text"
-										class="form-control mb-3"
-										id="health-insurance-amount"
-										aria-label="Dollar amount (with dot and two decimal places)"
-										placeholder="$0.00"
-										oninput="updateTotalExpenses()"
-									/>
-
-									<div class="input-group mb-3">
-										<button
-											class="btn btn-outline-secondary dropdown-toggle"
-											type="button"
-											id="health-insurance-frequency-dropdown"
-											data-bs-toggle="dropdown"
-											aria-expanded="false"
-										>
-											Select Frequency
-										</button>
-										<ul
-											class="dropdown-menu"
-											aria-labelledby="health-insurance-frequency-dropdown"
-										>
-											<li>
-												<a
-													class="dropdown-item"
-													onclick="updateExpensesFrequency('Bi-Weekly', 'health-insurance-frequency-dropdown')"
-													>Bi-Weekly</a
-												>
-											</li>
-											<li>
-												<a
-													class="dropdown-item"
-													onclick="updateExpensesFrequency('Monthly', 'health-insurance-frequency-dropdown')"
-													>Monthly</a
-												>
-											</li>
-										</ul>
-									</div>
-								</div>
-							</div>
-						</div>
-
-						<div class="row align-items-center">
-							<div class="col">
-								<div class="input-group mb-3">
-									<div class="input-group-prepend">
-										<span class="input-group-text">Vision</span>
-									</div>
-								</div>
-							</div>
-
-							<div class="col">
-								<div class="input-container grid gap-0 column-gap-3">
-									<input
-										type="text"
-										class="form-control mb-3"
-										id="vision-amount"
-										aria-label="Dollar amount (with dot and two decimal places)"
-										placeholder="$0.00"
-										oninput="updateTotalExpenses()"
-									/>
-
-									<div class="input-group mb-3">
-										<button
-											class="btn btn-outline-secondary dropdown-toggle"
-											type="button"
-											id="vision-frequency-dropdown"
-											data-bs-toggle="dropdown"
-											aria-expanded="false"
-										>
-											Select Frequency
-										</button>
-										<ul
-											class="dropdown-menu"
-											aria-labelledby="vision-frequency-dropdown"
-										>
-											<li>
-												<a
-													class="dropdown-item"
-													onclick="updateExpensesFrequency('Bi-Weekly', 'vision-frequency-dropdown')"
-													>Bi-Weekly</a
-												>
-											</li>
-											<li>
-												<a
-													class="dropdown-item"
-													onclick="updateExpensesFrequency('Monthly', 'vision-frequency-dropdown')"
-													>Monthly</a
-												>
-											</li>
-										</ul>
-									</div>
-								</div>
-							</div>
-						</div>
-
-						<div class="row align-items-center">
-							<div class="col">
-								<div class="input-group mb-3">
-									<div class="input-group-prepend">
-										<span class="input-group-text">Dental</span>
-									</div>
-								</div>
-							</div>
-
-							<div class="col">
-								<div class="input-container grid gap-0 column-gap-3">
-									<input
-										type="text"
-										class="form-control mb-3"
-										id="dental-amount"
-										aria-label="Dollar amount (with dot and two decimal places)"
-										placeholder="$0.00"
-										oninput="updateTotalExpenses()"
-									/>
-
-									<div class="input-group mb-3">
-										<button
-											class="btn btn-outline-secondary dropdown-toggle"
-											type="button"
-											id="dental-frequency-dropdown"
-											data-bs-toggle="dropdown"
-											aria-expanded="false"
-										>
-											Select Frequency
-										</button>
-										<ul
-											class="dropdown-menu"
-											aria-labelledby="dental-frequency-dropdown"
-										>
-											<li>
-												<a
-													class="dropdown-item"
-													onclick="updateExpensesFrequency('Bi-Weekly', 'dental-frequency-dropdown')"
-													>Bi-Weekly</a
-												>
-											</li>
-											<li>
-												<a
-													class="dropdown-item"
-													onclick="updateExpensesFrequency('Monthly', 'dental-frequency-dropdown')"
-													>Monthly</a
-												>
-											</li>
-										</ul>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-
-					<div class="expenses-section">
-						<h3>Utilities</h3>
-
-						<div class="row align-items-center">
-							<div class="col">
-								<div class="input-group mb-3">
-									<div class="input-group-prepend">
-										<span class="input-group-text">Electricity</span>
-									</div>
-								</div>
-							</div>
-							<div class="col">
-								<div class="input-container grid gap-0 column-gap-3">
-									<input
-										type="text"
-										class="form-control mb-3"
-										id="electricity-amount"
-										aria-label="Dollar amount (with dot and two decimal places)"
-										placeholder="$0.00"
-										oninput="updateTotalExpenses()"
-									/>
-
-									<div class="input-group mb-3">
-										<button
-											class="btn btn-outline-secondary dropdown-toggle"
-											type="button"
-											id="electricity-frequency-dropdown"
-											data-bs-toggle="dropdown"
-											aria-expanded="false"
-										>
-											Select Frequency
-										</button>
-										<ul
-											class="dropdown-menu"
-											aria-labelledby="electricity-frequency-dropdown"
-										>
-											<li>
-												<a
-													class="dropdown-item"
-													onclick="updateExpensesFrequency('Bi-Weekly', 'electricity-frequency-dropdown')"
-													>Bi-Weekly</a
-												>
-											</li>
-											<li>
-												<a
-													class="dropdown-item"
-													onclick="updateExpensesFrequency('Monthly', 'electricity-frequency-dropdown')"
-													>Monthly</a
-												>
-											</li>
-										</ul>
-									</div>
-								</div>
-							</div>
-						</div>
-
-						<div class="row align-items-center">
-							<div class="col">
-								<div class="input-group mb-3">
-									<div class="input-group-prepend">
-										<span class="input-group-text">Water</span>
-									</div>
-								</div>
-							</div>
-							<div class="col">
-								<div class="input-container grid gap-0 column-gap-3">
-									<input
-										type="text"
-										class="form-control mb-3"
-										id="water-amount"
-										aria-label="Dollar amount (with dot and two decimal places)"
-										placeholder="$0.00"
-										oninput="updateTotalExpenses()"
-									/>
-
-									<div class="input-group mb-3">
-										<button
-											class="btn btn-outline-secondary dropdown-toggle"
-											type="button"
-											id="water-frequency-dropdown"
-											data-bs-toggle="dropdown"
-											aria-expanded="false"
-										>
-											Select Frequency
-										</button>
-										<ul
-											class="dropdown-menu"
-											aria-labelledby="water-frequency-dropdown"
-										>
-											<li>
-												<a
-													class="dropdown-item"
-													onclick="updateExpensesFrequency('Bi-Weekly', 'water-frequency-dropdown')"
-													>Bi-Weekly</a
-												>
-											</li>
-											<li>
-												<a
-													class="dropdown-item"
-													onclick="updateExpensesFrequency('Monthly', 'water-frequency-dropdown')"
-													>Monthly</a
-												>
-											</li>
-										</ul>
-									</div>
-								</div>
-							</div>
-						</div>
-
-						<div class="row align-items-center">
-							<div class="col">
-								<div class="input-group mb-3">
-									<div class="input-group-prepend">
-										<span class="input-group-text">Sewer</span>
-									</div>
-								</div>
-							</div>
-							<div class="col">
-								<div class="input-container grid gap-0 column-gap-3">
-									<input
-										type="text"
-										class="form-control mb-3"
-										id="sewer-amount"
-										aria-label="Dollar amount (with dot and two decimal places)"
-										placeholder="$0.00"
-										oninput="updateTotalExpenses()"
-									/>
-
-									<div class="input-group mb-3">
-										<button
-											class="btn btn-outline-secondary dropdown-toggle"
-											type="button"
-											id="sewer-frequency-dropdown"
-											data-bs-toggle="dropdown"
-											aria-expanded="false"
-										>
-											Select Frequency
-										</button>
-										<ul
-											class="dropdown-menu"
-											aria-labelledby="sewer-frequency-dropdown"
-										>
-											<li>
-												<a
-													class="dropdown-item"
-													onclick="updateExpensesFrequency('Bi-Weekly', 'sewer-frequency-dropdown')"
-													>Bi-Weekly</a
-												>
-											</li>
-											<li>
-												<a
-													class="dropdown-item"
-													onclick="updateExpensesFrequency('Monthly', 'sewer-frequency-dropdown')"
-													>Monthly</a
-												>
-											</li>
-										</ul>
-									</div>
-								</div>
-							</div>
-						</div>
-
-						<div class="row align-items-center">
-							<div class="col">
-								<div class="input-group mb-3">
-									<div class="input-group-prepend">
-										<span class="input-group-text">Gas</span>
-									</div>
-								</div>
-							</div>
-							<div class="col">
-								<div class="input-container grid gap-0 column-gap-3">
-									<input
-										type="text"
-										class="form-control mb-3"
-										id="gas-amount"
-										aria-label="Dollar amount (with dot and two decimal places)"
-										placeholder="$0.00"
-										oninput="updateTotalExpenses()"
-									/>
-
-									<div class="input-group mb-3">
-										<button
-											class="btn btn-outline-secondary dropdown-toggle"
-											type="button"
-											id="gas-frequency-dropdown"
-											data-bs-toggle="dropdown"
-											aria-expanded="false"
-										>
-											Select Frequency
-										</button>
-										<ul
-											class="dropdown-menu"
-											aria-labelledby="gas-frequency-dropdown"
-										>
-											<li>
-												<a
-													class="dropdown-item"
-													onclick="updateExpensesFrequency('Bi-Weekly', 'gas-frequency-dropdown')"
-													>Bi-Weekly</a
-												>
-											</li>
-											<li>
-												<a
-													class="dropdown-item"
-													onclick="updateExpensesFrequency('Monthly', 'gas-frequency-dropdown')"
-													>Monthly</a
-												>
-											</li>
-										</ul>
-									</div>
-								</div>
-							</div>
-						</div>
-
-						<div class="row align-items-center">
-							<div class="col">
-								<div class="input-group mb-3">
-									<div class="input-group-prepend">
-										<span class="input-group-text">Waste Disposal</span>
-									</div>
-								</div>
-							</div>
-							<div class="col">
-								<div class="input-container grid gap-0 column-gap-3">
-									<input
-										type="text"
-										class="form-control mb-3"
-										id="waste-disposal-amount"
-										aria-label="Dollar amount (with dot and two decimal places)"
-										placeholder="$0.00"
-										oninput="updateTotalExpenses()"
-									/>
-
-									<div class="input-group mb-3">
-										<button
-											class="btn btn-outline-secondary dropdown-toggle"
-											type="button"
-											id="waste-disposal-frequency-dropdown"
-											data-bs-toggle="dropdown"
-											aria-expanded="false"
-										>
-											Select Frequency
-										</button>
-										<ul
-											class="dropdown-menu"
-											aria-labelledby="waste-disposal-frequency-dropdown"
-										>
-											<li>
-												<a
-													class="dropdown-item"
-													onclick="updateExpensesFrequency('Bi-Weekly', 'waste-disposal-frequency-dropdown')"
-													>Bi-Weekly</a
-												>
-											</li>
-											<li>
-												<a
-													class="dropdown-item"
-													onclick="updateExpensesFrequency('Monthly', 'waste-disposal-frequency-dropdown')"
-													>Monthly</a
-												>
-											</li>
-										</ul>
-									</div>
-								</div>
-							</div>
-						</div>
-
-						<div class="row align-items-center">
-							<div class="col">
-								<div class="input-group mb-3">
-									<div class="input-group-prepend">
-										<span class="input-group-text">Internet</span>
-									</div>
-								</div>
-							</div>
-							<div class="col">
-								<div class="input-container grid gap-0 column-gap-3">
-									<input
-										type="text"
-										class="form-control mb-3"
-										id="internet-amount"
-										aria-label="Dollar amount (with dot and two decimal places)"
-										placeholder="$0.00"
-										oninput="updateTotalExpenses()"
-									/>
-
-									<div class="input-group mb-3">
-										<button
-											class="btn btn-outline-secondary dropdown-toggle"
-											type="button"
-											id="internet-frequency-dropdown"
-											data-bs-toggle="dropdown"
-											aria-expanded="false"
-										>
-											Select Frequency
-										</button>
-										<ul
-											class="dropdown-menu"
-											aria-labelledby="internet-frequency-dropdown"
-										>
-											<li>
-												<a
-													class="dropdown-item"
-													onclick="updateExpensesFrequency('Bi-Weekly', 'internet-frequency-dropdown')"
-													>Bi-Weekly</a
-												>
-											</li>
-											<li>
-												<a
-													class="dropdown-item"
-													onclick="updateExpensesFrequency('Monthly', 'internet-frequency-dropdown')"
-													>Monthly</a
-												>
-											</li>
-										</ul>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-
-					<div class="expenses-section">
-						<h3>Living</h3>
-
-						<div class="row align-items-center">
-							<div class="col">
-								<div class="input-group mb-3">
-									<div class="input-group-prepend">
-										<span class="input-group-text"
-											>Shopping (Food, Hygiene, Beauty, etc.)</span
-										>
-									</div>
-								</div>
-							</div>
-							<div class="col">
-								<div class="input-container grid gap-0 column-gap-3">
-									<input
-										type="text"
-										class="form-control mb-3"
-										id="shopping-amount"
-										aria-label="Dollar amount (with dot and two decimal places)"
-										placeholder="$0.00"
-										oninput="updateTotalExpenses()"
-									/>
-
-									<div class="input-group mb-3">
-										<button
-											class="btn btn-outline-secondary dropdown-toggle"
-											type="button"
-											id="shopping-frequency-dropdown"
-											data-bs-toggle="dropdown"
-											aria-expanded="false"
-										>
-											Select Frequency
-										</button>
-										<ul
-											class="dropdown-menu"
-											aria-labelledby="shopping-frequency-dropdown"
-										>
-											<li>
-												<a
-													class="dropdown-item"
-													onclick="updateExpensesFrequency('Bi-Weekly', 'shopping-frequency-dropdown')"
-													>Bi-Weekly</a
-												>
-											</li>
-											<li>
-												<a
-													class="dropdown-item"
-													onclick="updateExpensesFrequency('Monthly', 'shopping-frequency-dropdown')"
-													>Monthly</a
-												>
-											</li>
-										</ul>
-									</div>
-								</div>
-							</div>
-						</div>
-
-						<div class="row align-items-center">
-							<div class="col">
-								<div class="input-group mb-3">
-									<div class="input-group-prepend">
-										<span class="input-group-text"
-											>Ordering In or Dining Out</span
-										>
-									</div>
-								</div>
-							</div>
-							<div class="col">
-								<div class="input-container grid gap-0 column-gap-3">
-									<input
-										type="text"
-										class="form-control mb-3"
-										id="ordering-in-dining-out-amount"
-										aria-label="Dollar amount (with dot and two decimal places)"
-										placeholder="$0.00"
-										oninput="updateTotalExpenses()"
-									/>
-
-									<div class="input-group mb-3">
-										<button
-											class="btn btn-outline-secondary dropdown-toggle"
-											type="button"
-											id="ordering-in-dining-out-frequency-dropdown"
-											data-bs-toggle="dropdown"
-											aria-expanded="false"
-										>
-											Select Frequency
-										</button>
-										<ul
-											class="dropdown-menu"
-											aria-labelledby="ordering-in-dining-out-frequency-dropdown"
-										>
-											<li>
-												<a
-													class="dropdown-item"
-													onclick="updateExpensesFrequency('Bi-Weekly', 'ordering-in-dining-out-frequency-dropdown')"
-													>Bi-Weekly</a
-												>
-											</li>
-											<li>
-												<a
-													class="dropdown-item"
-													onclick="updateExpensesFrequency('Monthly', 'ordering-in-dining-out-frequency-dropdown')"
-													>Monthly</a
-												>
-											</li>
-										</ul>
-									</div>
-								</div>
-							</div>
-						</div>
-
-						<div class="row align-items-center">
-							<div class="col">
-								<div class="input-group mb-3">
-									<div class="input-group-prepend">
-										<span class="input-group-text">Date Nights</span>
-									</div>
-								</div>
-							</div>
-							<div class="col">
-								<div class="input-container grid gap-0 column-gap-3">
-									<input
-										type="text"
-										class="form-control mb-3"
-										id="date-nights-amount"
-										aria-label="Dollar amount (with dot and two decimal places)"
-										placeholder="$0.00"
-										oninput="updateTotalExpenses()"
-									/>
-
-									<div class="input-group mb-3">
-										<button
-											class="btn btn-outline-secondary dropdown-toggle"
-											type="button"
-											id="date-nights-frequency-dropdown"
-											data-bs-toggle="dropdown"
-											aria-expanded="false"
-										>
-											Select Frequency
-										</button>
-										<ul
-											class="dropdown-menu"
-											aria-labelledby="date-nights-frequency-dropdown"
-										>
-											<li>
-												<a
-													class="dropdown-item"
-													onclick="updateExpensesFrequency('Bi-Weekly', 'date-nights-frequency-dropdown')"
-													>Bi-Weekly</a
-												>
-											</li>
-											<li>
-												<a
-													class="dropdown-item"
-													onclick="updateExpensesFrequency('Monthly', 'date-nights-frequency-dropdown')"
-													>Monthly</a
-												>
-											</li>
-										</ul>
-									</div>
-								</div>
-							</div>
-						</div>
-
-						<div class="row align-items-center">
-							<div class="col">
-								<div class="input-group mb-3">
-									<div class="input-group-prepend">
-										<span class="input-group-text">Family Date Nights</span>
-									</div>
-								</div>
-							</div>
-							<div class="col">
-								<div class="input-container grid gap-0 column-gap-3">
-									<input
-										type="text"
-										class="form-control mb-3"
-										id="family-date-nights-amount"
-										aria-label="Dollar amount (with dot and two decimal places)"
-										placeholder="$0.00"
-										oninput="updateTotalExpenses()"
-									/>
-
-									<div class="input-group mb-3">
-										<button
-											class="btn btn-outline-secondary dropdown-toggle"
-											type="button"
-											id="family-date-nights-frequency-dropdown"
-											data-bs-toggle="dropdown"
-											aria-expanded="false"
-										>
-											Select Frequency
-										</button>
-										<ul
-											class="dropdown-menu"
-											aria-labelledby="family-date-nights-frequency-dropdown"
-										>
-											<li>
-												<a
-													class="dropdown-item"
-													onclick="updateExpensesFrequency('Bi-Weekly', 'family-date-nights-frequency-dropdown')"
-													>Bi-Weekly</a
-												>
-											</li>
-											<li>
-												<a
-													class="dropdown-item"
-													onclick="updateExpensesFrequency('Monthly', 'family-date-nights-frequency-dropdown')"
-													>Monthly</a
-												>
-											</li>
-										</ul>
-									</div>
-								</div>
-							</div>
-						</div>
-
-						<div class="row align-items-center">
-							<div class="col">
-								<div class="input-group mb-3">
-									<div class="input-group-prepend">
-										<span class="input-group-text">Clothes</span>
-									</div>
-								</div>
-							</div>
-							<div class="col">
-								<div class="input-container grid gap-0 column-gap-3">
-									<input
-										type="text"
-										class="form-control mb-3"
-										id="clothes-amount"
-										aria-label="Dollar amount (with dot and two decimal places)"
-										placeholder="$0.00"
-										oninput="updateTotalExpenses()"
-									/>
-
-									<div class="input-group mb-3">
-										<button
-											class="btn btn-outline-secondary dropdown-toggle"
-											type="button"
-											id="clothes-frequency-dropdown"
-											data-bs-toggle="dropdown"
-											aria-expanded="false"
-										>
-											Select Frequency
-										</button>
-										<ul
-											class="dropdown-menu"
-											aria-labelledby="clothes-frequency-dropdown"
-										>
-											<li>
-												<a
-													class="dropdown-item"
-													onclick="updateExpensesFrequency('Bi-Weekly', 'clothes-frequency-dropdown')"
-													>Bi-Weekly</a
-												>
-											</li>
-											<li>
-												<a
-													class="dropdown-item"
-													onclick="updateExpensesFrequency('Monthly', 'clothes-frequency-dropdown')"
-													>Monthly</a
-												>
-											</li>
-										</ul>
-									</div>
-								</div>
-							</div>
-						</div>
-
-						<div class="row align-items-center">
-							<div class="col">
-								<div class="input-group mb-3">
-									<div class="input-group-prepend">
-										<span class="input-group-text">Shoes</span>
-									</div>
-								</div>
-							</div>
-							<div class="col">
-								<div class="input-container grid gap-0 column-gap-3">
-									<input
-										type="text"
-										class="form-control mb-3"
-										id="shoes-amount"
-										aria-label="Dollar amount (with dot and two decimal places)"
-										placeholder="$0.00"
-										oninput="updateTotalExpenses()"
-									/>
-
-									<div class="input-group mb-3">
-										<button
-											class="btn btn-outline-secondary dropdown-toggle"
-											type="button"
-											id="shoes-frequency-dropdown"
-											data-bs-toggle="dropdown"
-											aria-expanded="false"
-										>
-											Select Frequency
-										</button>
-										<ul
-											class="dropdown-menu"
-											aria-labelledby="shoes-frequency-dropdown"
-										>
-											<li>
-												<a
-													class="dropdown-item"
-													onclick="updateExpensesFrequency('Bi-Weekly', 'shoes-frequency-dropdown')"
-													>Bi-Weekly</a
-												>
-											</li>
-											<li>
-												<a
-													class="dropdown-item"
-													onclick="updateExpensesFrequency('Monthly', 'shoes-frequency-dropdown')"
-													>Monthly</a
-												>
-											</li>
-										</ul>
-									</div>
-								</div>
-							</div>
-						</div>
-
-						<div class="row align-items-center">
-							<div class="col">
-								<div class="input-group mb-3">
-									<div class="input-group-prepend">
-										<span class="input-group-text">Haircuts</span>
-									</div>
-								</div>
-							</div>
-							<div class="col">
-								<div class="input-container grid gap-0 column-gap-3">
-									<input
-										type="text"
-										class="form-control mb-3"
-										id="haircuts-amount"
-										aria-label="Dollar amount (with dot and two decimal places)"
-										placeholder="$0.00"
-										oninput="updateTotalExpenses()"
-									/>
-
-									<div class="input-group mb-3">
-										<button
-											class="btn btn-outline-secondary dropdown-toggle"
-											type="button"
-											id="haircuts-frequency-dropdown"
-											data-bs-toggle="dropdown"
-											aria-expanded="false"
-										>
-											Select Frequency
-										</button>
-										<ul
-											class="dropdown-menu"
-											aria-labelledby="haircuts-frequency-dropdown"
-										>
-											<li>
-												<a
-													class="dropdown-item"
-													onclick="updateExpensesFrequency('Bi-Weekly', 'haircuts-frequency-dropdown')"
-													>Bi-Weekly</a
-												>
-											</li>
-											<li>
-												<a
-													class="dropdown-item"
-													onclick="updateExpensesFrequency('Monthly', 'haircuts-frequency-dropdown')"
-													>Monthly</a
-												>
-											</li>
-										</ul>
-									</div>
-								</div>
-							</div>
-						</div>
-
-						<div class="row align-items-center">
-							<div class="col">
-								<div class="input-group mb-3">
-									<div class="input-group-prepend">
-										<span class="input-group-text"
-											>Trasportation (Gasoline, Bus, Taxi, etc.)</span
-										>
-									</div>
-								</div>
-							</div>
-							<div class="col">
-								<div class="input-container grid gap-0 column-gap-3">
-									<input
-										type="text"
-										class="form-control mb-3"
-										id="transportation-amount"
-										aria-label="Dollar amount (with dot and two decimal places)"
-										placeholder="$0.00"
-										oninput="updateTotalExpenses()"
-									/>
-
-									<div class="input-group mb-3">
-										<button
-											class="btn btn-outline-secondary dropdown-toggle"
-											type="button"
-											id="transportation-frequency-dropdown"
-											data-bs-toggle="dropdown"
-											aria-expanded="false"
-										>
-											Select Frequency
-										</button>
-										<ul
-											class="dropdown-menu"
-											aria-labelledby="transportation-frequency-dropdown"
-										>
-											<li>
-												<a
-													class="dropdown-item"
-													onclick="updateExpensesFrequency('Bi-Weekly', 'transportation-frequency-dropdown')"
-													>Bi-Weekly</a
-												>
-											</li>
-											<li>
-												<a
-													class="dropdown-item"
-													onclick="updateExpensesFrequency('Monthly', 'transportation-frequency-dropdown')"
-													>Monthly</a
-												>
-											</li>
-										</ul>
-									</div>
-								</div>
-							</div>
-						</div>
-
-						<div class="row align-items-center">
-							<div class="col">
-								<div class="input-group mb-3">
-									<div class="input-group-prepend">
-										<span class="input-group-text">Daycare</span>
-									</div>
-								</div>
-							</div>
-							<div class="col">
-								<div class="input-container grid gap-0 column-gap-3">
-									<input
-										type="text"
-										class="form-control mb-3"
-										id="daycare-amount"
-										aria-label="Dollar amount (with dot and two decimal places)"
-										placeholder="$0.00"
-										oninput="updateTotalExpenses()"
-									/>
-
-									<div class="input-group mb-3">
-										<button
-											class="btn btn-outline-secondary dropdown-toggle"
-											type="button"
-											id="daycare-frequency-dropdown"
-											data-bs-toggle="dropdown"
-											aria-expanded="false"
-										>
-											Select Frequency
-										</button>
-										<ul
-											class="dropdown-menu"
-											aria-labelledby="daycare-frequency-dropdown"
-										>
-											<li>
-												<a
-													class="dropdown-item"
-													onclick="updateExpensesFrequency('Bi-Weekly', 'daycare-frequency-dropdown')"
-													>Bi-Weekly</a
-												>
-											</li>
-											<li>
-												<a
-													class="dropdown-item"
-													onclick="updateExpensesFrequency('Monthly', 'daycare-frequency-dropdown')"
-													>Monthly</a
-												>
-											</li>
-										</ul>
-									</div>
-								</div>
-							</div>
-						</div>
-
-						<div class="expenses-section">
-							<h3>Other</h3>
+					<form id="income-form">
+						<div class="income-section">
+							<h3>Primary Income</h3>
 
 							<div class="row align-items-center">
 								<div class="col">
 									<div class="input-group mb-3">
 										<div class="input-group-prepend">
-											<span class="input-group-text">Savings</span>
+											<span class="input-group-text">Payroll</span>
 										</div>
 									</div>
 								</div>
@@ -1706,17 +182,17 @@
 										<input
 											type="text"
 											class="form-control mb-3"
-											id="savings-amount"
+											id="payroll-amount"
 											aria-label="Dollar amount (with dot and two decimal places)"
 											placeholder="$0.00"
-											oninput="updateTotalExpenses()"
+											oninput="updateTotalIncome()"
 										/>
 
 										<div class="input-group mb-3">
 											<button
 												class="btn btn-outline-secondary dropdown-toggle"
 												type="button"
-												id="savings-frequency-dropdown"
+												id="payroll-frequency-dropdown"
 												data-bs-toggle="dropdown"
 												aria-expanded="false"
 											>
@@ -1724,19 +200,75 @@
 											</button>
 											<ul
 												class="dropdown-menu"
-												aria-labelledby="savings-frequency-dropdown"
+												aria-labelledby="payroll-frequency-dropdown"
 											>
 												<li>
 													<a
 														class="dropdown-item"
-														onclick="updateExpensesFrequency('Bi-Weekly', 'savings-frequency-dropdown')"
+														onclick="updateIncomeFrequency('Bi-Weekly', 'payroll-frequency-dropdown')"
 														>Bi-Weekly</a
 													>
 												</li>
 												<li>
 													<a
 														class="dropdown-item"
-														onclick="updateExpensesFrequency('Monthly', 'savings-frequency-dropdown')"
+														onclick="updateIncomeFrequency('Monthly', 'payroll-frequency-dropdown')"
+														>Monthly</a
+													>
+												</li>
+											</ul>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div class="income-section">
+							<h3>Other Income</h3>
+							<div class="row align-items-center">
+								<div class="col">
+									<div class="input-group mb-3">
+										<div class="input-group-prepend">
+											<span class="input-group-text">Self-Employment</span>
+										</div>
+									</div>
+								</div>
+								<div class="col">
+									<div class="input-container grid gap-0 column-gap-3">
+										<input
+											type="text"
+											class="form-control mb-3"
+											id="self-employment-amount"
+											aria-label="Dollar amount (with dot and two decimal places)"
+											placeholder="$0.00"
+											oninput="updateTotalIncome()"
+										/>
+
+										<div class="input-group mb-3">
+											<button
+												class="btn btn-outline-secondary dropdown-toggle"
+												type="button"
+												id="self-employment-frequency-dropdown"
+												data-bs-toggle="dropdown"
+												aria-expanded="false"
+											>
+												Select Frequency
+											</button>
+											<ul
+												class="dropdown-menu"
+												aria-labelledby="self-employment-frequency-dropdown"
+											>
+												<li>
+													<a
+														class="dropdown-item"
+														onclick="updateIncomeFrequency('Bi-Weekly', 'self-employment-frequency-dropdown')"
+														>Bi-Weekly</a
+													>
+												</li>
+												<li>
+													<a
+														class="dropdown-item"
+														onclick="updateIncomeFrequency('Monthly', 'self-employment-frequency-dropdown')"
 														>Monthly</a
 													>
 												</li>
@@ -1750,7 +282,7 @@
 								<div class="col">
 									<div class="input-group mb-3">
 										<div class="input-group-prepend">
-											<span class="input-group-text">Emergency Fund</span>
+											<span class="input-group-text">Property Rent</span>
 										</div>
 									</div>
 								</div>
@@ -1759,7 +291,264 @@
 										<input
 											type="text"
 											class="form-control mb-3"
-											id="emergency-fund-amount"
+											id="property-rent-amount"
+											aria-label="Dollar amount (with dot and two decimal places)"
+											placeholder="$0.00"
+											oninput="updateTotalIncome()"
+										/>
+
+										<div class="input-group mb-3">
+											<button
+												class="btn btn-outline-secondary dropdown-toggle"
+												type="button"
+												id="property-rent-frequency-dropdown"
+												data-bs-toggle="dropdown"
+												aria-expanded="false"
+											>
+												Select Frequency
+											</button>
+											<ul
+												class="dropdown-menu"
+												aria-labelledby="property-rent-frequency-dropdown"
+											>
+												<li>
+													<a
+														class="dropdown-item"
+														onclick="updateIncomeFrequency('Bi-Weekly', 'property-rent-frequency-dropdown')"
+														>Bi-Weekly</a
+													>
+												</li>
+												<li>
+													<a
+														class="dropdown-item"
+														onclick="updateIncomeFrequency('Monthly', 'property-rent-frequency-dropdown')"
+														>Monthly</a
+													>
+												</li>
+											</ul>
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<div class="row align-items-center">
+								<div class="col">
+									<div class="input-group mb-3">
+										<div class="input-group-prepend">
+											<span class="input-group-text">Financial Support</span>
+										</div>
+									</div>
+								</div>
+								<div class="col">
+									<div class="input-container grid gap-0 column-gap-3">
+										<input
+											type="text"
+											class="form-control mb-3"
+											id="financial-support-amount"
+											aria-label="Dollar amount (with dot and two decimal places)"
+											placeholder="$0.00"
+											oninput="updateTotalIncome()"
+										/>
+
+										<div class="input-group mb-3">
+											<button
+												class="btn btn-outline-secondary dropdown-toggle"
+												type="button"
+												id="financial-support-frequency-dropdown"
+												data-bs-toggle="dropdown"
+												aria-expanded="false"
+											>
+												Select Frequency
+											</button>
+											<ul
+												class="dropdown-menu"
+												aria-labelledby="financial-support-frequency-dropdown"
+											>
+												<li>
+													<a
+														class="dropdown-item"
+														onclick="updateIncomeFrequency('Bi-Weekly', 'financial-support-frequency-dropdown')"
+														>Bi-Weekly</a
+													>
+												</li>
+												<li>
+													<a
+														class="dropdown-item"
+														onclick="updateIncomeFrequency('Monthly', 'financial-support-frequency-dropdown')"
+														>Monthly</a
+													>
+												</li>
+											</ul>
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<div class="row align-items-center">
+								<div class="col">
+									<div class="input-group mb-3">
+										<div class="input-group-prepend">
+											<span class="input-group-text">Pension</span>
+										</div>
+									</div>
+								</div>
+								<div class="col">
+									<div class="input-container grid gap-0 column-gap-3">
+										<input
+											type="text"
+											class="form-control mb-3"
+											id="pension-amount"
+											aria-label="Dollar amount (with dot and two decimal places)"
+											placeholder="$0.00"
+											oninput="updateTotalIncome()"
+										/>
+
+										<div class="input-group mb-3">
+											<button
+												class="btn btn-outline-secondary dropdown-toggle"
+												type="button"
+												id="pension-frequency-dropdown"
+												data-bs-toggle="dropdown"
+												aria-expanded="false"
+											>
+												Select Frequency
+											</button>
+											<ul
+												class="dropdown-menu"
+												aria-labelledby="pension-frequency-dropdown"
+											>
+												<li>
+													<a
+														class="dropdown-item"
+														onclick="updateIncomeFrequency('Bi-Weekly', 'pension-frequency-dropdown')"
+														>Bi-Weekly</a
+													>
+												</li>
+												<li>
+													<a
+														class="dropdown-item"
+														onclick="updateIncomeFrequency('Monthly', 'pension-frequency-dropdown')"
+														>Monthly</a
+													>
+												</li>
+											</ul>
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<div class="row align-items-center">
+								<div class="col">
+									<div class="input-group grid gap-0 column-gap-3">
+										<div class="input-group-prepend">
+											<input
+												type="text"
+												class="form-control mb-3"
+												id="other-income"
+												placeholder="Other (Please Specify)"
+											/>
+										</div>
+										<div class="input-group-prepend">
+											<button
+												type="button"
+												id="saveOther"
+												class="btn btn-success"
+											>
+												Save
+											</button>
+											<button
+												type="button"
+												id="deleteOther"
+												class="btn btn-danger"
+											>
+												Delete
+											</button>
+										</div>
+									</div>
+								</div>
+								<div class="col">
+									<div class="input-container grid gap-0 column-gap-3">
+										<input
+											type="text"
+											class="form-control mb-3"
+											id="other-amount"
+											aria-label="Dollar amount (with dot and two decimal places)"
+											placeholder="$0.00"
+											oninput="updateTotalIncome()"
+										/>
+
+										<div class="input-group mb-3">
+											<button
+												class="btn btn-outline-secondary dropdown-toggle"
+												type="button"
+												id="other-frequency-dropdown"
+												data-bs-toggle="dropdown"
+												aria-expanded="false"
+											>
+												Select Frequency
+											</button>
+											<ul
+												class="dropdown-menu"
+												aria-labelledby="other-frequency-dropdown"
+											>
+												<li>
+													<a
+														class="dropdown-item"
+														onclick="updateIncomeFrequency('Bi-Weekly', 'other-frequency-dropdown')"
+														>Bi-Weekly</a
+													>
+												</li>
+												<li>
+													<a
+														class="dropdown-item"
+														onclick="updateIncomeFrequency('Monthly', 'other-frequency-dropdown')"
+														>Monthly</a
+													>
+												</li>
+											</ul>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="total-income-section">
+							<h3>Total Monthly Income</h3>
+							<h4 id="total-income">$0.00</h4>
+						</div>
+
+						<div class="button-container">
+							<button
+								class="btn btn-primary action-button input-bills-button"
+								data-next="#expenses"
+								id="loadIncomeData"
+							>
+								Input Bills<i class="fas fa-chevron-right"></i>
+							</button>
+						</div>
+					</form>
+
+					<section id="income-container"></section>
+				</div>
+
+				<div id="expenses" class="tab-pane fade">
+					<form id="expenses-form">
+						<div class="expenses-section">
+							<h3>Household</h3>
+
+							<div class="row align-items-center">
+								<div class="col">
+									<div class="input-group mb-3">
+										<div class="input-group-prepend">
+											<span class="input-group-text">Mortgage or Rent</span>
+										</div>
+									</div>
+								</div>
+								<div class="col">
+									<div class="input-container grid gap-0 column-gap-3">
+										<input
+											type="text"
+											class="form-control mb-3"
+											id="mortgage-rent-amount"
 											aria-label="Dollar amount (with dot and two decimal places)"
 											placeholder="$0.00"
 											oninput="updateTotalExpenses()"
@@ -1769,7 +558,7 @@
 											<button
 												class="btn btn-outline-secondary dropdown-toggle"
 												type="button"
-												id="emergency-fund-frequency-dropdown"
+												id="mortgage-rent-frequency-dropdown"
 												data-bs-toggle="dropdown"
 												aria-expanded="false"
 											>
@@ -1777,12 +566,389 @@
 											</button>
 											<ul
 												class="dropdown-menu"
-												aria-labelledby="emergency-fund-frequency-dropdown"
+												aria-labelledby="mortgage-rent-frequency-dropdown"
 											>
 												<li>
 													<a
 														class="dropdown-item"
-														onclick="updateExpensesFrequency('Bi-Weekly', 'emergency-fund-frequency-dropdown')"
+														onclick="updateExpensesFrequency('Bi-Weekly', 'mortgage-rent-frequency-dropdown')"
+														>Bi-Weekly</a
+													>
+												</li>
+												<li>
+													<a
+														class="dropdown-item"
+														onclick="updateExpensesFrequency('Monthly','mortgage-rent-frequency-dropdown')"
+														>Monthly</a
+													>
+												</li>
+											</ul>
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<div class="row align-items-center">
+								<div class="col">
+									<div class="input-group mb-3">
+										<div class="input-group-prepend">
+											<span class="input-group-text">House Insurance</span>
+										</div>
+									</div>
+								</div>
+								<div class="col">
+									<div class="input-container grid gap-0 column-gap-3">
+										<input
+											type="text"
+											class="form-control mb-3"
+											id="house-insurance-amount"
+											aria-label="Dollar amount (with dot and two decimal places)"
+											placeholder="$0.00"
+											oninput="updateTotalExpenses()"
+										/>
+
+										<div class="input-group mb-3">
+											<button
+												class="btn btn-outline-secondary dropdown-toggle"
+												type="button"
+												id="house-insurance-frequency-dropdown"
+												data-bs-toggle="dropdown"
+												aria-expanded="false"
+											>
+												Select Frequency
+											</button>
+											<ul
+												class="dropdown-menu"
+												aria-labelledby="house-insurance-frequency-dropdown"
+											>
+												<li>
+													<a
+														class="dropdown-item"
+														onclick="updateExpensesFrequency('Bi-Weekly', 'house-insurance-frequency-dropdown')"
+														>Bi-Weekly</a
+													>
+												</li>
+												<li>
+													<a
+														class="dropdown-item"
+														onclick="updateExpensesFrequency('Monthly','house-insurance-frequency-dropdown')"
+														>Monthly</a
+													>
+												</li>
+											</ul>
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<div class="row align-items-center">
+								<div class="col">
+									<div class="input-group mb-3">
+										<div class="input-group-prepend">
+											<span class="input-group-text">Car Payments</span>
+										</div>
+									</div>
+								</div>
+								<div class="col">
+									<div class="input-container grid gap-0 column-gap-3">
+										<input
+											type="text"
+											class="form-control mb-3"
+											id="car-payments-amount"
+											aria-label="Dollar amount (with dot and two decimal places)"
+											placeholder="$0.00"
+											oninput="updateTotalExpenses()"
+										/>
+
+										<div class="input-group mb-3">
+											<button
+												class="btn btn-outline-secondary dropdown-toggle"
+												type="button"
+												id="car-payments-frequency-dropdown"
+												data-bs-toggle="dropdown"
+												aria-expanded="false"
+											>
+												Select Frequency
+											</button>
+											<ul
+												class="dropdown-menu"
+												aria-labelledby="car-payments-frequency-dropdown"
+											>
+												<li>
+													<a
+														class="dropdown-item"
+														onclick="updateExpensesFrequency('Bi-Weekly', 'car-payments-frequency-dropdown')"
+														>Bi-Weekly</a
+													>
+												</li>
+												<li>
+													<a
+														class="dropdown-item"
+														onclick="updateExpensesFrequency('Monthly', 'car-payments-frequency-dropdown')"
+														>Monthly</a
+													>
+												</li>
+											</ul>
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<div class="row align-items-center">
+								<div class="col">
+									<div class="input-group mb-3">
+										<div class="input-group-prepend">
+											<span class="input-group-text">Car Insurance</span>
+										</div>
+									</div>
+								</div>
+								<div class="col">
+									<div class="input-container grid gap-0 column-gap-3">
+										<input
+											type="text"
+											class="form-control mb-3"
+											id="car-insurance-amount"
+											aria-label="Dollar amount (with dot and two decimal places)"
+											placeholder="$0.00"
+											oninput="updateTotalExpenses()"
+										/>
+
+										<div class="input-group mb-3">
+											<button
+												class="btn btn-outline-secondary dropdown-toggle"
+												type="button"
+												id="car-insurance-frequency-dropdown"
+												data-bs-toggle="dropdown"
+												aria-expanded="false"
+											>
+												Select Frequency
+											</button>
+											<ul
+												class="dropdown-menu"
+												aria-labelledby="car-insurance-frequency-dropdown"
+											>
+												<li>
+													<a
+														class="dropdown-item"
+														onclick="updateExpensesFrequency('Bi-Weekly', 'car-insurance-frequency-dropdown')"
+														>Bi-Weekly</a
+													>
+												</li>
+												<li>
+													<a
+														class="dropdown-item"
+														onclick="updateExpensesFrequency('Monthly','car-insurance-frequency-dropdown')"
+														>Monthly</a
+													>
+												</li>
+											</ul>
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<div class="row align-items-center">
+								<div class="col">
+									<div class="input-group mb-3">
+										<div class="input-group-prepend">
+											<span class="input-group-text">Health Insurance</span>
+										</div>
+									</div>
+								</div>
+								<div class="col">
+									<div class="input-container grid gap-0 column-gap-3">
+										<input
+											type="text"
+											class="form-control mb-3"
+											id="health-insurance-amount"
+											aria-label="Dollar amount (with dot and two decimal places)"
+											placeholder="$0.00"
+											oninput="updateTotalExpenses()"
+										/>
+
+										<div class="input-group mb-3">
+											<button
+												class="btn btn-outline-secondary dropdown-toggle"
+												type="button"
+												id="health-insurance-frequency-dropdown"
+												data-bs-toggle="dropdown"
+												aria-expanded="false"
+											>
+												Select Frequency
+											</button>
+											<ul
+												class="dropdown-menu"
+												aria-labelledby="health-insurance-frequency-dropdown"
+											>
+												<li>
+													<a
+														class="dropdown-item"
+														onclick="updateExpensesFrequency('Bi-Weekly', 'health-insurance-frequency-dropdown')"
+														>Bi-Weekly</a
+													>
+												</li>
+												<li>
+													<a
+														class="dropdown-item"
+														onclick="updateExpensesFrequency('Monthly', 'health-insurance-frequency-dropdown')"
+														>Monthly</a
+													>
+												</li>
+											</ul>
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<div class="row align-items-center">
+								<div class="col">
+									<div class="input-group mb-3">
+										<div class="input-group-prepend">
+											<span class="input-group-text">Vision</span>
+										</div>
+									</div>
+								</div>
+
+								<div class="col">
+									<div class="input-container grid gap-0 column-gap-3">
+										<input
+											type="text"
+											class="form-control mb-3"
+											id="vision-amount"
+											aria-label="Dollar amount (with dot and two decimal places)"
+											placeholder="$0.00"
+											oninput="updateTotalExpenses()"
+										/>
+
+										<div class="input-group mb-3">
+											<button
+												class="btn btn-outline-secondary dropdown-toggle"
+												type="button"
+												id="vision-frequency-dropdown"
+												data-bs-toggle="dropdown"
+												aria-expanded="false"
+											>
+												Select Frequency
+											</button>
+											<ul
+												class="dropdown-menu"
+												aria-labelledby="vision-frequency-dropdown"
+											>
+												<li>
+													<a
+														class="dropdown-item"
+														onclick="updateExpensesFrequency('Bi-Weekly', 'vision-frequency-dropdown')"
+														>Bi-Weekly</a
+													>
+												</li>
+												<li>
+													<a
+														class="dropdown-item"
+														onclick="updateExpensesFrequency('Monthly', 'vision-frequency-dropdown')"
+														>Monthly</a
+													>
+												</li>
+											</ul>
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<div class="row align-items-center">
+								<div class="col">
+									<div class="input-group mb-3">
+										<div class="input-group-prepend">
+											<span class="input-group-text">Dental</span>
+										</div>
+									</div>
+								</div>
+
+								<div class="col">
+									<div class="input-container grid gap-0 column-gap-3">
+										<input
+											type="text"
+											class="form-control mb-3"
+											id="dental-amount"
+											aria-label="Dollar amount (with dot and two decimal places)"
+											placeholder="$0.00"
+											oninput="updateTotalExpenses()"
+										/>
+
+										<div class="input-group mb-3">
+											<button
+												class="btn btn-outline-secondary dropdown-toggle"
+												type="button"
+												id="dental-frequency-dropdown"
+												data-bs-toggle="dropdown"
+												aria-expanded="false"
+											>
+												Select Frequency
+											</button>
+											<ul
+												class="dropdown-menu"
+												aria-labelledby="dental-frequency-dropdown"
+											>
+												<li>
+													<a
+														class="dropdown-item"
+														onclick="updateExpensesFrequency('Bi-Weekly', 'dental-frequency-dropdown')"
+														>Bi-Weekly</a
+													>
+												</li>
+												<li>
+													<a
+														class="dropdown-item"
+														onclick="updateExpensesFrequency('Monthly', 'dental-frequency-dropdown')"
+														>Monthly</a
+													>
+												</li>
+											</ul>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div class="expenses-section">
+							<h3>Utilities</h3>
+
+							<div class="row align-items-center">
+								<div class="col">
+									<div class="input-group mb-3">
+										<div class="input-group-prepend">
+											<span class="input-group-text">Electricity</span>
+										</div>
+									</div>
+								</div>
+								<div class="col">
+									<div class="input-container grid gap-0 column-gap-3">
+										<input
+											type="text"
+											class="form-control mb-3"
+											id="electricity-amount"
+											aria-label="Dollar amount (with dot and two decimal places)"
+											placeholder="$0.00"
+											oninput="updateTotalExpenses()"
+										/>
+
+										<div class="input-group mb-3">
+											<button
+												class="btn btn-outline-secondary dropdown-toggle"
+												type="button"
+												id="electricity-frequency-dropdown"
+												data-bs-toggle="dropdown"
+												aria-expanded="false"
+											>
+												Select Frequency
+											</button>
+											<ul
+												class="dropdown-menu"
+												aria-labelledby="electricity-frequency-dropdown"
+											>
+												<li>
+													<a
+														class="dropdown-item"
+														onclick="updateExpensesFrequency('Bi-Weekly', 'electricity-frequency-dropdown')"
 														>Bi-Weekly</a
 													>
 												</li>
@@ -1803,7 +969,7 @@
 								<div class="col">
 									<div class="input-group mb-3">
 										<div class="input-group-prepend">
-											<span class="input-group-text">Miscellaneous</span>
+											<span class="input-group-text">Water</span>
 										</div>
 									</div>
 								</div>
@@ -1812,7 +978,7 @@
 										<input
 											type="text"
 											class="form-control mb-3"
-											id="miscellaneous-amount"
+											id="water-amount"
 											aria-label="Dollar amount (with dot and two decimal places)"
 											placeholder="$0.00"
 											oninput="updateTotalExpenses()"
@@ -1822,7 +988,7 @@
 											<button
 												class="btn btn-outline-secondary dropdown-toggle"
 												type="button"
-												id="miscellaneous-frequency-dropdown"
+												id="water-frequency-dropdown"
 												data-bs-toggle="dropdown"
 												aria-expanded="false"
 											>
@@ -1830,19 +996,231 @@
 											</button>
 											<ul
 												class="dropdown-menu"
-												aria-labelledby="miscellaneous-frequency-dropdown"
+												aria-labelledby="water-frequency-dropdown"
 											>
 												<li>
 													<a
 														class="dropdown-item"
-														onclick="updateExpensesFrequency('Bi-Weekly', 'miscellaneous-frequency-dropdown')"
+														onclick="updateExpensesFrequency('Bi-Weekly', 'water-frequency-dropdown')"
 														>Bi-Weekly</a
 													>
 												</li>
 												<li>
 													<a
 														class="dropdown-item"
-														onclick="updateExpensesFrequency('Monthly', 'miscellaneous-frequency-dropdown')"
+														onclick="updateExpensesFrequency('Monthly', 'water-frequency-dropdown')"
+														>Monthly</a
+													>
+												</li>
+											</ul>
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<div class="row align-items-center">
+								<div class="col">
+									<div class="input-group mb-3">
+										<div class="input-group-prepend">
+											<span class="input-group-text">Sewer</span>
+										</div>
+									</div>
+								</div>
+								<div class="col">
+									<div class="input-container grid gap-0 column-gap-3">
+										<input
+											type="text"
+											class="form-control mb-3"
+											id="sewer-amount"
+											aria-label="Dollar amount (with dot and two decimal places)"
+											placeholder="$0.00"
+											oninput="updateTotalExpenses()"
+										/>
+
+										<div class="input-group mb-3">
+											<button
+												class="btn btn-outline-secondary dropdown-toggle"
+												type="button"
+												id="sewer-frequency-dropdown"
+												data-bs-toggle="dropdown"
+												aria-expanded="false"
+											>
+												Select Frequency
+											</button>
+											<ul
+												class="dropdown-menu"
+												aria-labelledby="sewer-frequency-dropdown"
+											>
+												<li>
+													<a
+														class="dropdown-item"
+														onclick="updateExpensesFrequency('Bi-Weekly', 'sewer-frequency-dropdown')"
+														>Bi-Weekly</a
+													>
+												</li>
+												<li>
+													<a
+														class="dropdown-item"
+														onclick="updateExpensesFrequency('Monthly', 'sewer-frequency-dropdown')"
+														>Monthly</a
+													>
+												</li>
+											</ul>
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<div class="row align-items-center">
+								<div class="col">
+									<div class="input-group mb-3">
+										<div class="input-group-prepend">
+											<span class="input-group-text">Gas</span>
+										</div>
+									</div>
+								</div>
+								<div class="col">
+									<div class="input-container grid gap-0 column-gap-3">
+										<input
+											type="text"
+											class="form-control mb-3"
+											id="gas-amount"
+											aria-label="Dollar amount (with dot and two decimal places)"
+											placeholder="$0.00"
+											oninput="updateTotalExpenses()"
+										/>
+
+										<div class="input-group mb-3">
+											<button
+												class="btn btn-outline-secondary dropdown-toggle"
+												type="button"
+												id="gas-frequency-dropdown"
+												data-bs-toggle="dropdown"
+												aria-expanded="false"
+											>
+												Select Frequency
+											</button>
+											<ul
+												class="dropdown-menu"
+												aria-labelledby="gas-frequency-dropdown"
+											>
+												<li>
+													<a
+														class="dropdown-item"
+														onclick="updateExpensesFrequency('Bi-Weekly', 'gas-frequency-dropdown')"
+														>Bi-Weekly</a
+													>
+												</li>
+												<li>
+													<a
+														class="dropdown-item"
+														onclick="updateExpensesFrequency('Monthly', 'gas-frequency-dropdown')"
+														>Monthly</a
+													>
+												</li>
+											</ul>
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<div class="row align-items-center">
+								<div class="col">
+									<div class="input-group mb-3">
+										<div class="input-group-prepend">
+											<span class="input-group-text">Waste Disposal</span>
+										</div>
+									</div>
+								</div>
+								<div class="col">
+									<div class="input-container grid gap-0 column-gap-3">
+										<input
+											type="text"
+											class="form-control mb-3"
+											id="waste-disposal-amount"
+											aria-label="Dollar amount (with dot and two decimal places)"
+											placeholder="$0.00"
+											oninput="updateTotalExpenses()"
+										/>
+
+										<div class="input-group mb-3">
+											<button
+												class="btn btn-outline-secondary dropdown-toggle"
+												type="button"
+												id="waste-disposal-frequency-dropdown"
+												data-bs-toggle="dropdown"
+												aria-expanded="false"
+											>
+												Select Frequency
+											</button>
+											<ul
+												class="dropdown-menu"
+												aria-labelledby="waste-disposal-frequency-dropdown"
+											>
+												<li>
+													<a
+														class="dropdown-item"
+														onclick="updateExpensesFrequency('Bi-Weekly', 'waste-disposal-frequency-dropdown')"
+														>Bi-Weekly</a
+													>
+												</li>
+												<li>
+													<a
+														class="dropdown-item"
+														onclick="updateExpensesFrequency('Monthly', 'waste-disposal-frequency-dropdown')"
+														>Monthly</a
+													>
+												</li>
+											</ul>
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<div class="row align-items-center">
+								<div class="col">
+									<div class="input-group mb-3">
+										<div class="input-group-prepend">
+											<span class="input-group-text">Internet</span>
+										</div>
+									</div>
+								</div>
+								<div class="col">
+									<div class="input-container grid gap-0 column-gap-3">
+										<input
+											type="text"
+											class="form-control mb-3"
+											id="internet-amount"
+											aria-label="Dollar amount (with dot and two decimal places)"
+											placeholder="$0.00"
+											oninput="updateTotalExpenses()"
+										/>
+
+										<div class="input-group mb-3">
+											<button
+												class="btn btn-outline-secondary dropdown-toggle"
+												type="button"
+												id="internet-frequency-dropdown"
+												data-bs-toggle="dropdown"
+												aria-expanded="false"
+											>
+												Select Frequency
+											</button>
+											<ul
+												class="dropdown-menu"
+												aria-labelledby="internet-frequency-dropdown"
+											>
+												<li>
+													<a
+														class="dropdown-item"
+														onclick="updateExpensesFrequency('Bi-Weekly', 'internet-frequency-dropdown')"
+														>Bi-Weekly</a
+													>
+												</li>
+												<li>
+													<a
+														class="dropdown-item"
+														onclick="updateExpensesFrequency('Monthly', 'internet-frequency-dropdown')"
 														>Monthly</a
 													>
 												</li>
@@ -1852,21 +1230,674 @@
 								</div>
 							</div>
 						</div>
-					</div>
 
-					<div class="total-expenses-section">
-						<h3>Total Monthly Expenses</h3>
-						<h4 id="total-expenses">$0.00</h4>
-					</div>
+						<div class="expenses-section">
+							<h3>Living</h3>
 
-					<div class="button-container">
-						<button
-							class="btn btn-primary action-button get-summary-button"
-							data-next="#summary"
-						>
-							Get Summary<i class="fas fa-chevron-right"></i>
-						</button>
-					</div>
+							<div class="row align-items-center">
+								<div class="col">
+									<div class="input-group mb-3">
+										<div class="input-group-prepend">
+											<span class="input-group-text"
+												>Shopping (Food, Hygiene, Beauty, etc.)</span
+											>
+										</div>
+									</div>
+								</div>
+								<div class="col">
+									<div class="input-container grid gap-0 column-gap-3">
+										<input
+											type="text"
+											class="form-control mb-3"
+											id="shopping-amount"
+											aria-label="Dollar amount (with dot and two decimal places)"
+											placeholder="$0.00"
+											oninput="updateTotalExpenses()"
+										/>
+
+										<div class="input-group mb-3">
+											<button
+												class="btn btn-outline-secondary dropdown-toggle"
+												type="button"
+												id="shopping-frequency-dropdown"
+												data-bs-toggle="dropdown"
+												aria-expanded="false"
+											>
+												Select Frequency
+											</button>
+											<ul
+												class="dropdown-menu"
+												aria-labelledby="shopping-frequency-dropdown"
+											>
+												<li>
+													<a
+														class="dropdown-item"
+														onclick="updateExpensesFrequency('Bi-Weekly', 'shopping-frequency-dropdown')"
+														>Bi-Weekly</a
+													>
+												</li>
+												<li>
+													<a
+														class="dropdown-item"
+														onclick="updateExpensesFrequency('Monthly', 'shopping-frequency-dropdown')"
+														>Monthly</a
+													>
+												</li>
+											</ul>
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<div class="row align-items-center">
+								<div class="col">
+									<div class="input-group mb-3">
+										<div class="input-group-prepend">
+											<span class="input-group-text"
+												>Ordering In or Dining Out</span
+											>
+										</div>
+									</div>
+								</div>
+								<div class="col">
+									<div class="input-container grid gap-0 column-gap-3">
+										<input
+											type="text"
+											class="form-control mb-3"
+											id="ordering-in-dining-out-amount"
+											aria-label="Dollar amount (with dot and two decimal places)"
+											placeholder="$0.00"
+											oninput="updateTotalExpenses()"
+										/>
+
+										<div class="input-group mb-3">
+											<button
+												class="btn btn-outline-secondary dropdown-toggle"
+												type="button"
+												id="ordering-in-dining-out-frequency-dropdown"
+												data-bs-toggle="dropdown"
+												aria-expanded="false"
+											>
+												Select Frequency
+											</button>
+											<ul
+												class="dropdown-menu"
+												aria-labelledby="ordering-in-dining-out-frequency-dropdown"
+											>
+												<li>
+													<a
+														class="dropdown-item"
+														onclick="updateExpensesFrequency('Bi-Weekly', 'ordering-in-dining-out-frequency-dropdown')"
+														>Bi-Weekly</a
+													>
+												</li>
+												<li>
+													<a
+														class="dropdown-item"
+														onclick="updateExpensesFrequency('Monthly', 'ordering-in-dining-out-frequency-dropdown')"
+														>Monthly</a
+													>
+												</li>
+											</ul>
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<div class="row align-items-center">
+								<div class="col">
+									<div class="input-group mb-3">
+										<div class="input-group-prepend">
+											<span class="input-group-text">Date Nights</span>
+										</div>
+									</div>
+								</div>
+								<div class="col">
+									<div class="input-container grid gap-0 column-gap-3">
+										<input
+											type="text"
+											class="form-control mb-3"
+											id="date-nights-amount"
+											aria-label="Dollar amount (with dot and two decimal places)"
+											placeholder="$0.00"
+											oninput="updateTotalExpenses()"
+										/>
+
+										<div class="input-group mb-3">
+											<button
+												class="btn btn-outline-secondary dropdown-toggle"
+												type="button"
+												id="date-nights-frequency-dropdown"
+												data-bs-toggle="dropdown"
+												aria-expanded="false"
+											>
+												Select Frequency
+											</button>
+											<ul
+												class="dropdown-menu"
+												aria-labelledby="date-nights-frequency-dropdown"
+											>
+												<li>
+													<a
+														class="dropdown-item"
+														onclick="updateExpensesFrequency('Bi-Weekly', 'date-nights-frequency-dropdown')"
+														>Bi-Weekly</a
+													>
+												</li>
+												<li>
+													<a
+														class="dropdown-item"
+														onclick="updateExpensesFrequency('Monthly', 'date-nights-frequency-dropdown')"
+														>Monthly</a
+													>
+												</li>
+											</ul>
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<div class="row align-items-center">
+								<div class="col">
+									<div class="input-group mb-3">
+										<div class="input-group-prepend">
+											<span class="input-group-text">Family Date Nights</span>
+										</div>
+									</div>
+								</div>
+								<div class="col">
+									<div class="input-container grid gap-0 column-gap-3">
+										<input
+											type="text"
+											class="form-control mb-3"
+											id="family-date-nights-amount"
+											aria-label="Dollar amount (with dot and two decimal places)"
+											placeholder="$0.00"
+											oninput="updateTotalExpenses()"
+										/>
+
+										<div class="input-group mb-3">
+											<button
+												class="btn btn-outline-secondary dropdown-toggle"
+												type="button"
+												id="family-date-nights-frequency-dropdown"
+												data-bs-toggle="dropdown"
+												aria-expanded="false"
+											>
+												Select Frequency
+											</button>
+											<ul
+												class="dropdown-menu"
+												aria-labelledby="family-date-nights-frequency-dropdown"
+											>
+												<li>
+													<a
+														class="dropdown-item"
+														onclick="updateExpensesFrequency('Bi-Weekly', 'family-date-nights-frequency-dropdown')"
+														>Bi-Weekly</a
+													>
+												</li>
+												<li>
+													<a
+														class="dropdown-item"
+														onclick="updateExpensesFrequency('Monthly', 'family-date-nights-frequency-dropdown')"
+														>Monthly</a
+													>
+												</li>
+											</ul>
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<div class="row align-items-center">
+								<div class="col">
+									<div class="input-group mb-3">
+										<div class="input-group-prepend">
+											<span class="input-group-text">Clothes</span>
+										</div>
+									</div>
+								</div>
+								<div class="col">
+									<div class="input-container grid gap-0 column-gap-3">
+										<input
+											type="text"
+											class="form-control mb-3"
+											id="clothes-amount"
+											aria-label="Dollar amount (with dot and two decimal places)"
+											placeholder="$0.00"
+											oninput="updateTotalExpenses()"
+										/>
+
+										<div class="input-group mb-3">
+											<button
+												class="btn btn-outline-secondary dropdown-toggle"
+												type="button"
+												id="clothes-frequency-dropdown"
+												data-bs-toggle="dropdown"
+												aria-expanded="false"
+											>
+												Select Frequency
+											</button>
+											<ul
+												class="dropdown-menu"
+												aria-labelledby="clothes-frequency-dropdown"
+											>
+												<li>
+													<a
+														class="dropdown-item"
+														onclick="updateExpensesFrequency('Bi-Weekly', 'clothes-frequency-dropdown')"
+														>Bi-Weekly</a
+													>
+												</li>
+												<li>
+													<a
+														class="dropdown-item"
+														onclick="updateExpensesFrequency('Monthly', 'clothes-frequency-dropdown')"
+														>Monthly</a
+													>
+												</li>
+											</ul>
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<div class="row align-items-center">
+								<div class="col">
+									<div class="input-group mb-3">
+										<div class="input-group-prepend">
+											<span class="input-group-text">Shoes</span>
+										</div>
+									</div>
+								</div>
+								<div class="col">
+									<div class="input-container grid gap-0 column-gap-3">
+										<input
+											type="text"
+											class="form-control mb-3"
+											id="shoes-amount"
+											aria-label="Dollar amount (with dot and two decimal places)"
+											placeholder="$0.00"
+											oninput="updateTotalExpenses()"
+										/>
+
+										<div class="input-group mb-3">
+											<button
+												class="btn btn-outline-secondary dropdown-toggle"
+												type="button"
+												id="shoes-frequency-dropdown"
+												data-bs-toggle="dropdown"
+												aria-expanded="false"
+											>
+												Select Frequency
+											</button>
+											<ul
+												class="dropdown-menu"
+												aria-labelledby="shoes-frequency-dropdown"
+											>
+												<li>
+													<a
+														class="dropdown-item"
+														onclick="updateExpensesFrequency('Bi-Weekly', 'shoes-frequency-dropdown')"
+														>Bi-Weekly</a
+													>
+												</li>
+												<li>
+													<a
+														class="dropdown-item"
+														onclick="updateExpensesFrequency('Monthly', 'shoes-frequency-dropdown')"
+														>Monthly</a
+													>
+												</li>
+											</ul>
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<div class="row align-items-center">
+								<div class="col">
+									<div class="input-group mb-3">
+										<div class="input-group-prepend">
+											<span class="input-group-text">Haircuts</span>
+										</div>
+									</div>
+								</div>
+								<div class="col">
+									<div class="input-container grid gap-0 column-gap-3">
+										<input
+											type="text"
+											class="form-control mb-3"
+											id="haircuts-amount"
+											aria-label="Dollar amount (with dot and two decimal places)"
+											placeholder="$0.00"
+											oninput="updateTotalExpenses()"
+										/>
+
+										<div class="input-group mb-3">
+											<button
+												class="btn btn-outline-secondary dropdown-toggle"
+												type="button"
+												id="haircuts-frequency-dropdown"
+												data-bs-toggle="dropdown"
+												aria-expanded="false"
+											>
+												Select Frequency
+											</button>
+											<ul
+												class="dropdown-menu"
+												aria-labelledby="haircuts-frequency-dropdown"
+											>
+												<li>
+													<a
+														class="dropdown-item"
+														onclick="updateExpensesFrequency('Bi-Weekly', 'haircuts-frequency-dropdown')"
+														>Bi-Weekly</a
+													>
+												</li>
+												<li>
+													<a
+														class="dropdown-item"
+														onclick="updateExpensesFrequency('Monthly', 'haircuts-frequency-dropdown')"
+														>Monthly</a
+													>
+												</li>
+											</ul>
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<div class="row align-items-center">
+								<div class="col">
+									<div class="input-group mb-3">
+										<div class="input-group-prepend">
+											<span class="input-group-text"
+												>Trasportation (Gasoline, Bus, Taxi, etc.)</span
+											>
+										</div>
+									</div>
+								</div>
+								<div class="col">
+									<div class="input-container grid gap-0 column-gap-3">
+										<input
+											type="text"
+											class="form-control mb-3"
+											id="transportation-amount"
+											aria-label="Dollar amount (with dot and two decimal places)"
+											placeholder="$0.00"
+											oninput="updateTotalExpenses()"
+										/>
+
+										<div class="input-group mb-3">
+											<button
+												class="btn btn-outline-secondary dropdown-toggle"
+												type="button"
+												id="transportation-frequency-dropdown"
+												data-bs-toggle="dropdown"
+												aria-expanded="false"
+											>
+												Select Frequency
+											</button>
+											<ul
+												class="dropdown-menu"
+												aria-labelledby="transportation-frequency-dropdown"
+											>
+												<li>
+													<a
+														class="dropdown-item"
+														onclick="updateExpensesFrequency('Bi-Weekly', 'transportation-frequency-dropdown')"
+														>Bi-Weekly</a
+													>
+												</li>
+												<li>
+													<a
+														class="dropdown-item"
+														onclick="updateExpensesFrequency('Monthly', 'transportation-frequency-dropdown')"
+														>Monthly</a
+													>
+												</li>
+											</ul>
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<div class="row align-items-center">
+								<div class="col">
+									<div class="input-group mb-3">
+										<div class="input-group-prepend">
+											<span class="input-group-text">Daycare</span>
+										</div>
+									</div>
+								</div>
+								<div class="col">
+									<div class="input-container grid gap-0 column-gap-3">
+										<input
+											type="text"
+											class="form-control mb-3"
+											id="daycare-amount"
+											aria-label="Dollar amount (with dot and two decimal places)"
+											placeholder="$0.00"
+											oninput="updateTotalExpenses()"
+										/>
+
+										<div class="input-group mb-3">
+											<button
+												class="btn btn-outline-secondary dropdown-toggle"
+												type="button"
+												id="daycare-frequency-dropdown"
+												data-bs-toggle="dropdown"
+												aria-expanded="false"
+											>
+												Select Frequency
+											</button>
+											<ul
+												class="dropdown-menu"
+												aria-labelledby="daycare-frequency-dropdown"
+											>
+												<li>
+													<a
+														class="dropdown-item"
+														onclick="updateExpensesFrequency('Bi-Weekly', 'daycare-frequency-dropdown')"
+														>Bi-Weekly</a
+													>
+												</li>
+												<li>
+													<a
+														class="dropdown-item"
+														onclick="updateExpensesFrequency('Monthly', 'daycare-frequency-dropdown')"
+														>Monthly</a
+													>
+												</li>
+											</ul>
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<div class="expenses-section">
+								<h3>Other</h3>
+
+								<div class="row align-items-center">
+									<div class="col">
+										<div class="input-group mb-3">
+											<div class="input-group-prepend">
+												<span class="input-group-text">Savings</span>
+											</div>
+										</div>
+									</div>
+									<div class="col">
+										<div class="input-container grid gap-0 column-gap-3">
+											<input
+												type="text"
+												class="form-control mb-3"
+												id="savings-amount"
+												aria-label="Dollar amount (with dot and two decimal places)"
+												placeholder="$0.00"
+												oninput="updateTotalExpenses()"
+											/>
+
+											<div class="input-group mb-3">
+												<button
+													class="btn btn-outline-secondary dropdown-toggle"
+													type="button"
+													id="savings-frequency-dropdown"
+													data-bs-toggle="dropdown"
+													aria-expanded="false"
+												>
+													Select Frequency
+												</button>
+												<ul
+													class="dropdown-menu"
+													aria-labelledby="savings-frequency-dropdown"
+												>
+													<li>
+														<a
+															class="dropdown-item"
+															onclick="updateExpensesFrequency('Bi-Weekly', 'savings-frequency-dropdown')"
+															>Bi-Weekly</a
+														>
+													</li>
+													<li>
+														<a
+															class="dropdown-item"
+															onclick="updateExpensesFrequency('Monthly', 'savings-frequency-dropdown')"
+															>Monthly</a
+														>
+													</li>
+												</ul>
+											</div>
+										</div>
+									</div>
+								</div>
+
+								<div class="row align-items-center">
+									<div class="col">
+										<div class="input-group mb-3">
+											<div class="input-group-prepend">
+												<span class="input-group-text">Emergency Fund</span>
+											</div>
+										</div>
+									</div>
+									<div class="col">
+										<div class="input-container grid gap-0 column-gap-3">
+											<input
+												type="text"
+												class="form-control mb-3"
+												id="emergency-fund-amount"
+												aria-label="Dollar amount (with dot and two decimal places)"
+												placeholder="$0.00"
+												oninput="updateTotalExpenses()"
+											/>
+
+											<div class="input-group mb-3">
+												<button
+													class="btn btn-outline-secondary dropdown-toggle"
+													type="button"
+													id="emergency-fund-frequency-dropdown"
+													data-bs-toggle="dropdown"
+													aria-expanded="false"
+												>
+													Select Frequency
+												</button>
+												<ul
+													class="dropdown-menu"
+													aria-labelledby="emergency-fund-frequency-dropdown"
+												>
+													<li>
+														<a
+															class="dropdown-item"
+															onclick="updateExpensesFrequency('Bi-Weekly', 'emergency-fund-frequency-dropdown')"
+															>Bi-Weekly</a
+														>
+													</li>
+													<li>
+														<a
+															class="dropdown-item"
+															onclick="updateExpensesFrequency('Monthly', 'electricity-frequency-dropdown')"
+															>Monthly</a
+														>
+													</li>
+												</ul>
+											</div>
+										</div>
+									</div>
+								</div>
+
+								<div class="row align-items-center">
+									<div class="col">
+										<div class="input-group mb-3">
+											<div class="input-group-prepend">
+												<span class="input-group-text">Miscellaneous</span>
+											</div>
+										</div>
+									</div>
+									<div class="col">
+										<div class="input-container grid gap-0 column-gap-3">
+											<input
+												type="text"
+												class="form-control mb-3"
+												id="miscellaneous-amount"
+												aria-label="Dollar amount (with dot and two decimal places)"
+												placeholder="$0.00"
+												oninput="updateTotalExpenses()"
+											/>
+
+											<div class="input-group mb-3">
+												<button
+													class="btn btn-outline-secondary dropdown-toggle"
+													type="button"
+													id="miscellaneous-frequency-dropdown"
+													data-bs-toggle="dropdown"
+													aria-expanded="false"
+												>
+													Select Frequency
+												</button>
+												<ul
+													class="dropdown-menu"
+													aria-labelledby="miscellaneous-frequency-dropdown"
+												>
+													<li>
+														<a
+															class="dropdown-item"
+															onclick="updateExpensesFrequency('Bi-Weekly', 'miscellaneous-frequency-dropdown')"
+															>Bi-Weekly</a
+														>
+													</li>
+													<li>
+														<a
+															class="dropdown-item"
+															onclick="updateExpensesFrequency('Monthly', 'miscellaneous-frequency-dropdown')"
+															>Monthly</a
+														>
+													</li>
+												</ul>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div class="total-expenses-section">
+							<h3>Total Monthly Expenses</h3>
+							<h4 id="total-expenses">$0.00</h4>
+						</div>
+
+						<div class="button-container">
+							<button
+								class="btn btn-primary action-button get-summary-button"
+								id="loadExpensesData"
+								data-next="#summary"
+							>
+								Get Summary<i class="fas fa-chevron-right"></i>
+							</button>
+						</div>
+					</form>
+
+					<section id="expenses-container"></section>
 				</div>
 
 				<div id="summary" class="tab-pane fade">
@@ -1920,6 +1951,7 @@
 		</footer>
 
 		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 		<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
@@ -1929,7 +1961,7 @@
 		<script src="./scripts/expenses.js"></script>
 		<script src="./scripts/chart.js"></script>
 		<script src="./scripts/summary.js"></script>
-		<script src="./requests.js"></script>
-		<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+		<script type="module" src="./income-main.js"></script>
+		<script type="module" src="./expenses-main.js"></script>
 	</body>
 </html>

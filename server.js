@@ -14,3 +14,15 @@ app.get("/", (req, res) => {
 app.listen(PORT, () => {
 	console.log(`Server running on port ${PORT}`);
 });
+
+app.post("/income", (req, res) => {
+	// Logic to add income to the database
+});
+
+app.put("/income/:id", (req, res) => {
+	// Logic to update income in the database
+});
+
+app.delete("/income/:id", (req, res) => {
+	// Logic to delete income from the database
+});
