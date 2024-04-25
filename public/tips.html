@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Tips</title>
+		<link rel="stylesheet" href="styles.css" />
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>Budget Planner Web Application</title>
+		<link
+			rel="stylesheet"
+			href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+		/>
+		<link
+			href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+			rel="stylesheet"
+		/>
+		<link rel="stylesheet" href="styles.css" />
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+	</head>
+	<body>
+		<nav class="navbar navbar-expand-sm navbar-dark bg-dark sticky-top">
+			<div class="container">
+				<a href="#" class="navbar-brand mb-0 h1">
+					<img
+						class="d-inline-block align-top"
+						src="https://upload.wikimedia.org/wikipedia/commons/7/73/Flat_tick_icon.svg"
+						width="30"
+						height="30"
+						alt="green tick icon"
+					/>
+					Budget Planner
+				</a>
+				<button
+					type="button"
+					class="navbar-toggler"
+					data-bs-toggle="collapse"
+					data-bs-target="#navbarNav"
+					aria-controls="navbarNav"
+					aria-expanded="false"
+					aria-label="Toggle navigation"
+				>
+					<span class="navbar-toggler-icon"></span>
+				</button>
+				<div class="collapse navbar-collapse" id="navbarNav">
+					<ul class="navbar-nav">
+						<li class="nav-item active">
+							<a href="./index.html" class="nav-link text-light">Dashboard</a>
+						</li>
+
+						<li class="nav-item active">
+							<a href="/public/tips.html" class="nav-link text-light">Tips</a>
+						</li>
+					</ul>
+				</div>
+				<form id="search-id" class="d-flex">
+					<input type="text" class="form-control me-2" />
+					<button type="submit" class="btn-primary">Search</button>
+				</form>
+			</div>
+		</nav>
+		<div class="container tab-container">
+			<div class="tab-content">
+				<h3>Money Saving Tips</h3>
+				<button
+					id="getTips"
+					class="btn btn-primary action-button get-started-button"
+					data-next="#income"
+				>
+					Get Tips
+				</button>
+				<button
+					id="addNewTip"
+					class="btn btn-primary action-button get-started-button"
+					data-next="#income"
+				>
+					Add New Tip
+				</button>
+				<ul id="tipsList"></ul>
+			</div>
+		</div>
+
+		<footer class="bg-dark mb-0">
+			<div
+				class="container text-light text-center d-flex flex-column align-items-center"
+			>
+				<div class="nav-links mb-0 d-flex">
+					<a href="#" class="nav-link mx-3 text-decoration-none text-light"
+						>Home</a
+					>
+					<a href="#" class="nav-link mx-3 text-decoration-none text-light"
+						>About</a
+					>
+					<a href="#" class="nav-link mx-3 text-decoration-none text-light"
+						>Contact</a
+					>
+				</div>
+				<small class="text-white-50">
+					Copyright © 2024 Boyd Querubin. All rights reserved.
+				</small>
+			</div>
+		</footer>
+
+		<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+		<script src="tips.js" defer></script>
+	</body>
+</html>

@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 function setupIncomeInputs() {
 	const incomeInputs = document.querySelectorAll(
-		".income-section .form-control:not(#other-income)"
+		".income-section .form-control"
 	);
 
 	incomeInputs.forEach((input) => {
