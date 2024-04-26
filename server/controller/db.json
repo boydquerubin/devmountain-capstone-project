@@ -1,12 +1,24 @@
 {
-	"tips": [
-		{
-			"id": 1,
-			"text": "Review your subscriptions regularly."
-		},
-		{
-			"id": 2,
-			"text": "Prepare meals at home."
-		}
-	]
+  "tips": [
+    {
+      "id": 1,
+      "text": "Review your subscriptions regularly."
+    },
+    {
+      "id": 2,
+      "text": "Prepare meals at home."
+    },
+    {
+      "id": 3,
+      "text": "Set Savings Goals."
+    },
+    {
+      "id": 4,
+      "text": "Shop Smarter."
+    },
+    {
+      "id": 5,
+      "text": "Use Public Transportation."
+    }
+  ]
 }
