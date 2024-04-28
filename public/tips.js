@@ -1,5 +1,14 @@
-document.getElementById("getTips").addEventListener("click", fetchTips);
-document.getElementById("addNewTip").addEventListener("click", addTip);
+document.addEventListener("DOMContentLoaded", function () {
+  let tipsFetched = false; // Initialize state to track if tips have been fetched
+
+  document.getElementById("getTips").addEventListener("click", function () {
+    if (!tipsFetched) {
+      fetchTips();
+      tipsFetched = true; // Update state to indicate tips have been fetched
+    }
+  });
+  document.getElementById("addNewTip").addEventListener("click", addTip);
+});
 
 function fetchTips() {
   axios
@@ -7,7 +16,7 @@ function fetchTips() {
     .then((response) => {
       const tips = response.data;
       const tipsList = document.getElementById("tipsList");
-      tipsList.innerHTML = ""; // Clear existing tips
+      // tipsList.innerHTML = ""; // Clear existing tips
       tips.forEach((tip) => {
         const li = document.createElement("li");
         li.textContent = tip.text;
@@ -38,13 +47,18 @@ function fetchTips() {
     .catch((error) => console.error("Error fetching tips:", error));
 }
 
-function addTip() {
+function addTip(event) {
+  event.preventDefault(); // Prevent default form submission if within a form
   const tipText = prompt("Enter a new money saving tip:");
   if (tipText) {
     axios
       .post("http://localhost:3000/tips", { text: tipText })
       .then((response) => {
-        fetchTips(); // Refresh the list after adding
+        if (tipsFetched) {
+          // Only refresh if tips have already been fetched
+          console.log("addTip", fetchTips);
+          fetchTips();
+        }
       })
       .catch((error) => console.error("Error adding tip:", error));
   }
@@ -54,7 +68,11 @@ function updateTip(id, text) {
   axios
     .put(`http://localhost:3000/tips/${id}`, { text: text })
     .then((response) => {
-      fetchTips(); // Refresh the list after update
+      if (tipsFetched) {
+        // Only refresh if tips have already been fetched
+        // console.log("updateTip", fetchTips);
+        fetchTips();
+      }
     })
     .catch((error) => console.error("Error updating tip:", error));
 }
@@ -63,7 +81,11 @@ function deleteTip(id) {
   axios
     .delete(`http://localhost:3000/tips/${id}`)
     .then((response) => {
-      fetchTips(); // Refresh the list after deletion
+      if (tipsFetched) {
+        // Only refresh if tips have already been fetched
+        // console.log("deleteTip", fetchTips);
+        fetchTips();
+      }
     })
     .catch((error) => console.error("Error deleting tip:", error));
 }
